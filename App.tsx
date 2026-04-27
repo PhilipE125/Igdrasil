@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import OrganicBackground from './components/OrganicBackground';
-import Logo from './components/Logo';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Integrations from './components/Integrations';
+import AiDemo from './components/AiDemo';
+import Faq from './components/Faq';
 import WaitlistForm from './components/WaitlistForm';
 import { X } from 'lucide-react';
 
@@ -110,24 +114,19 @@ const App: React.FC = () => {
   }, [activeModal]);
 
   return (
-    <div className="relative min-h-screen overflow-hidden flex flex-col font-sans text-gray-700 selection:bg-igdrasil-accent selection:text-white">
+    <div id="top" className="relative min-h-screen overflow-x-clip flex flex-col font-sans text-gray-700 selection:bg-igdrasil-accent selection:text-white">
       <OrganicBackground />
 
-      {/* Header */}
-      <header className={`absolute top-0 w-full z-50 transition-all duration-1000 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'}`}>
-        <div className="max-w-7xl mx-auto px-6 py-6 flex justify-between items-center">
-          <Logo />
-        </div>
-      </header>
+      <Header onContactClick={() => setActiveModal('contact')} />
 
       {/* Main Content */}
-      <main className="flex-grow flex flex-col justify-center items-center px-4 relative z-10 pt-20">
+      <main className="flex-grow flex flex-col justify-center items-center px-4 relative z-10 pt-8">
         
         {/* Hero Section */}
         <div className={`max-w-4xl w-full mx-auto text-center space-y-10 transition-all duration-1000 delay-300 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           
           <div className="space-y-8">
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-light tracking-tighter text-gray-900 leading-[0.9]">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-light tracking-tighter text-gray-900 leading-[0.9]">
               Accounting that <br/>
               <span className="text-igdrasil-accent font-medium">
                  scales
@@ -138,7 +137,7 @@ const App: React.FC = () => {
               Focus on building. We'll handle the books.
             </p>
 
-            <div className="pt-2">
+            <div id="waitlist" className="pt-2 scroll-mt-24">
               <WaitlistForm />
             </div>
           </div>
@@ -149,8 +148,12 @@ const App: React.FC = () => {
             </p>
           </div>
 
-          <div className="max-w-2xl mx-auto pt-8 pb-6">
-            <p className="text-xs font-mono text-igdrasil-accent uppercase tracking-wider mb-4">We offer</p>
+          <div id="services" className="max-w-2xl mx-auto pt-8 pb-6 scroll-mt-24">
+            <p className="text-sm font-mono uppercase tracking-wider mb-4">
+              <span className="text-igdrasil-accent font-medium">01</span>
+              <span className="text-gray-400 mx-2">&mdash;</span>
+              <span className="text-igdrasil-accent">We offer</span>
+            </p>
             <div className="flex flex-wrap justify-center gap-2">
               <span className="px-4 py-1.5 bg-white border border-black/10 text-gray-700 rounded-full text-sm font-light shadow-sm">Bookkeeping</span>
               <span className="px-4 py-1.5 bg-white border border-black/10 text-gray-700 rounded-full text-sm font-light shadow-sm">Payroll</span>
@@ -160,7 +163,18 @@ const App: React.FC = () => {
             </div>
           </div>
 
-          <div className="max-w-2xl mx-auto text-left space-y-6 text-gray-600 font-light text-lg leading-relaxed pt-12 pb-8 border-t border-black/5">
+          <Integrations />
+
+          <AiDemo />
+
+          <Faq onContactClick={() => setActiveModal('contact')} />
+
+          <div id="about" className="max-w-2xl mx-auto text-left space-y-6 text-gray-600 font-light text-lg leading-relaxed pt-12 pb-8 border-t border-black/5 scroll-mt-24">
+            <p className="text-sm font-mono uppercase tracking-wider">
+              <span className="text-igdrasil-accent font-medium">05</span>
+              <span className="text-gray-400 mx-2">&mdash;</span>
+              <span className="text-igdrasil-accent">About</span>
+            </p>
             <h2 className="text-2xl font-light text-gray-900 tracking-tight">About us</h2>
             <p>
               Our vision is bookkeeping on autopilot. Accounting should feel effortless and stress-free. We aim to move beyond the admin and instead proactively use data to generate insights and drive performance.
@@ -177,28 +191,10 @@ const App: React.FC = () => {
 
       </main>
 
-      {/* Footer */}
-      <footer className="w-full py-8 border-t border-black/5 relative z-10">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
-          <div className="flex items-center space-x-4 mb-4 md:mb-0">
-             <span>&copy; 2026 Igdrasil AB. All rights reserved.</span>
-          </div>
-          <div className="flex space-x-6">
-            <button 
-              onClick={() => setActiveModal('terms')}
-              className="text-xs font-medium uppercase tracking-widest hover:text-igdrasil-accent transition-colors focus:outline-none"
-            >
-              Terms of Service
-            </button>
-            <button 
-              onClick={() => setActiveModal('contact')}
-              className="text-xs font-medium uppercase tracking-widest hover:text-igdrasil-accent transition-colors focus:outline-none"
-            >
-              Contact
-            </button>
-          </div>
-        </div>
-      </footer>
+      <Footer
+        onTermsClick={() => setActiveModal('terms')}
+        onContactClick={() => setActiveModal('contact')}
+      />
 
       {/* Modal Overlay */}
       {activeModal && (
