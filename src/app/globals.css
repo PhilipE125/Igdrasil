@@ -1,0 +1,267 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ─── micro.so design tokens ──────────────────────────────────────────── */
+
+@theme inline {
+  /* Fonts (loaded as next/font/local in layout.tsx) */
+  --font-sans: var(--font-haffer), "haffer Fallback", Arial, sans-serif;
+  --font-display: var(--font-perfectly-nineties), "perfectlyNineties Fallback", Georgia, serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  /* Map shadcn-style color tokens to vars */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-subtle-foreground: var(--subtle-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+
+  /* Layered backgrounds — defining surface depth */
+  --color-layer-1: var(--layer-1);
+  --color-layer-2: var(--layer-2);
+  --color-layer-3: var(--layer-3);
+  --color-layer-4: var(--layer-4);
+
+  /* Brand color scales (main / shade / tint) */
+  --color-blue-main: #518bdb;
+  --color-blue-shade: #24426a;
+  --color-blue-tint: #d5ecfb;
+  --color-sky-main: #52baeb;
+  --color-sky-shade: #295970;
+  --color-sky-tint: #dbf9ff;
+  --color-violet-main: #bf89cd;
+  --color-violet-shade: #4e3555;
+  --color-violet-tint: #f3eaf6;
+  --color-teal-main: #36bab8;
+  --color-teal-shade: #1b5050;
+  --color-teal-tint: #cff2ef;
+  --color-orange-main: #e5a057;
+  --color-orange-shade: #63492c;
+  --color-orange-tint: #f8ebd8;
+  --color-yellow-main: #d8c555;
+  --color-yellow-shade: #635a2c;
+  --color-yellow-tint: #f2eec9;
+  --color-red-main: #ed6d68;
+  --color-red-shade: #773332;
+  --color-red-tint: #ffdddb;
+  --color-brown-main: #c7915c;
+  --color-brown-shade: #473524;
+  --color-brown-tint: #ebdcc6;
+  --color-pink-main: #eea5df;
+  --color-pink-shade: #5c4758;
+  --color-pink-tint: #fae5f7;
+  --color-gray-main: #a1a1a1;
+  --color-gray-shade: #d4d4d4;
+
+  /* Hover overlay */
+  --color-hover-overlay: #ffffff0d;
+
+  /* Radii — Igdrasil uses rounded corners */
+  --radius-sm: 0.25rem;   /* 4px  */
+  --radius-md: 0.5rem;    /* 8px  */
+  --radius-lg: 0.75rem;   /* 12px */
+  --radius-xl: 1rem;      /* 16px */
+  --radius-2xl: 1.25rem;  /* 20px */
+  --radius-3xl: 1.5rem;   /* 24px */
+  --radius-4xl: 2rem;     /* 32px */
+
+  /* Animations */
+  --animate-spin-slow: spin-slow 8s linear infinite;
+  --animate-marquee-scroll: marquee-scroll var(--marquee-duration, 40s) linear infinite;
+  --animate-gradient-shift: gradient-shift 6s ease-in-out infinite;
+  --animate-eq1: eq1 0.9s ease-in-out infinite;
+  --animate-eq2: eq2 1.1s ease-in-out infinite;
+  --animate-eq3: eq3 1.3s ease-in-out infinite;
+  --animate-expand-progress: expandProgress var(--expand-progress-duration, 4s) linear forwards;
+}
+
+/* ─── Theme variables ─────────────────────────────────────────────────── */
+/* Igdrasil pastel palette — pink primary, green accent, yellow warning */
+
+:root {
+  /* Light mode */
+  --layer-1: #ffffff;
+  --layer-2: #faf9f6;
+  --layer-3: #f5f5f4;
+  --layer-4: #ebebe8;
+  --background: #faf9f6;
+  --foreground: #171717;
+  --muted: #f5f5f4;
+  --muted-foreground: #6b6b6b;
+  --subtle-foreground: #aaaaaa;
+  --popover: #ffffff;
+  --popover-foreground: #171717;
+  --card: #ffffff;
+  --card-foreground: #171717;
+  --border: #00000014;
+  --input: #00000014;
+  --primary: #ee8fe0;
+  --primary-foreground: #171717;
+  --secondary: #f5f5f4;
+  --secondary-foreground: #171717;
+  --accent: #b0ee8f;
+  --accent-foreground: #171717;
+  --success: #b0ee8f;
+  --success-foreground: #171717;
+  --warning: #eedd8f;
+  --warning-foreground: #171717;
+  --destructive: #ed6d68;
+  --destructive-foreground: #ffffff;
+  --ring: #ee8fe0;
+}
+
+.dark {
+  /* Dark mode */
+  --layer-1: #1c1c1c;
+  --layer-2: #212121;
+  --layer-3: #292929;
+  --layer-4: #2b2b2b;
+  --background: #1c1c1c;
+  --foreground: #f2f2f2;
+  --muted: #27272a;
+  --muted-foreground: #b0b0b0;
+  --subtle-foreground: #828282;
+  --popover: #2b2b2b;
+  --popover-foreground: #f2f2f2;
+  --card: #212121;
+  --card-foreground: #f2f2f2;
+  --border: #ffffff14;
+  --input: #ffffff1f;
+  --primary: #ee8fe0;
+  --primary-foreground: #171717;
+  --secondary: #27272a;
+  --secondary-foreground: #fafafa;
+  --accent: #b0ee8f;
+  --accent-foreground: #171717;
+  --success: #b0ee8f;
+  --success-foreground: #171717;
+  --warning: #eedd8f;
+  --warning-foreground: #171717;
+  --destructive: #7f1d1d;
+  --destructive-foreground: #fafafa;
+  --ring: #ee8fe0;
+}
+
+/* ─── Keyframes ──────────────────────────────────────────────────────── */
+
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes eq1 {
+  0%, 100% { transform: scaleY(0.4); }
+  50% { transform: scaleY(1); }
+}
+
+@keyframes eq2 {
+  0%, 100% { transform: scaleY(0.7); }
+  50% { transform: scaleY(0.3); }
+}
+
+@keyframes eq3 {
+  0%, 100% { transform: scaleY(0.5); }
+  50% { transform: scaleY(0.9); }
+}
+
+@keyframes expandProgress {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+
+/* ─── Base layer ─────────────────────────────────────────────────────── */
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+  html {
+    color-scheme: light;
+    background-color: var(--background);
+    overflow-x: hidden;
+    overscroll-behavior: none;
+    font-family: var(--font-sans);
+  }
+  html.dark {
+    color-scheme: dark;
+  }
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  ::selection {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+  }
+}
+
+/* ─── Utilities (component-flavoured shortcuts the source stylesheet uses) ── */
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+  .bg-layer-1 { background-color: var(--layer-1); }
+  .bg-layer-2 { background-color: var(--layer-2); }
+  .bg-layer-3 { background-color: var(--layer-3); }
+  .bg-layer-4 { background-color: var(--layer-4); }
+
+  .btn-hover-overlay {
+    position: relative;
+  }
+  .btn-hover-overlay::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--color-hover-overlay);
+    opacity: 0;
+    transition: opacity 0.15s cubic-bezier(.4, 0, .2, 1);
+    pointer-events: none;
+  }
+  .btn-hover-overlay:hover::after {
+    opacity: 1;
+  }
+
+  /* Dither texture used as an aesthetic motif */
+  .dither-xl {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAu0lEQVQ4T6WSMQqFMBBEE2wDXiVgG8gtglilCuIpcoogVqlEPIVgK3gVIa2Qzw9YbIpttlqGgbcMM5wxlr33LMbI/nccx3I/PQwD0LXPj+OgAaSUBWCtLZ+2bSv308uyAF37/HkeGkAIASL0fQ8yT9MEdO3z67poAKUUiDDPM8i87zvQtc/f96UBmqZBazTG4Ds4z5MG6LoOrTGEgO8gpUQDtG2L1uicw3dw3zcNoLVGa1zXFd9BzpkE+AFp94/4eKx9+AAAAABJRU5ErkJggg==);
+    background-size: 28px 28px;
+  }
+  .dither-lg {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAu0lEQVQ4T6WSMQqFMBBEE2wDXiVgG8gtglilCuIpcoogVqlEPIVgK3gVIa2Qzw9YbIpttlqGgbcMM5wxlr33LMbI/nccx3I/PQwD0LXPj+OgAaSUBWCtLZ+2bSv308uyAF37/HkeGkAIASL0fQ8yT9MEdO3z67poAKUUiDDPM8i87zvQtc/f96UBmqZBazTG4Ds4z5MG6LoOrTGEgO8gpUQDtG2L1uicw3dw3zcNoLVGa1zXFd9BzpkE+AFp94/4eKx9+AAAAABJRU5ErkJggg==);
+    background-size: 20px 20px;
+  }
+}
