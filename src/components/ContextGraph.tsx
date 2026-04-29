@@ -63,7 +63,7 @@ export function ContextGraph() {
       <div className="mx-auto w-full max-w-6xl px-6 lg:px-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
           {contextGraphFeatures.map((c) => (
-            <div key={c.title} className="border border-border bg-card p-5 rounded-[2px]">
+            <div key={c.title} className="border border-border bg-card p-5 rounded-2xl">
               <h3 className="text-base font-semibold text-foreground">{c.title}</h3>
               <p className="mt-1.5 text-sm text-muted-foreground leading-snug">
                 {c.description}
@@ -82,7 +82,7 @@ function ContextCard({
   card: (typeof contextCards)[number];
 }) {
   return (
-    <div className="w-[260px] shrink-0 border border-border bg-card rounded-[2px] p-4">
+    <div className="w-[260px] shrink-0 border border-border bg-card rounded-2xl p-4">
       <div className="flex items-center gap-2.5 mb-3">
         {card.iconSrc ? (
           <Image src={card.iconSrc} alt="" width={20} height={20} className="size-5 rounded-[3px]" />

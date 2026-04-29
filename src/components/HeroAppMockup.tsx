@@ -37,7 +37,7 @@ export function HeroAppMockup() {
                   onClick={() => setActive(label)}
                   aria-pressed={active === label}
                   className={cn(
-                    "h-8 px-3 text-left text-[13px] font-semibold rounded-[2px] transition-colors",
+                    "h-8 px-3 text-left text-[13px] font-semibold rounded-md transition-colors",
                     active === label
                       ? "bg-white/[0.06] text-foreground"
                       : "text-muted-foreground hover:bg-white/[0.04] hover:text-foreground/85",
@@ -51,7 +51,7 @@ export function HeroAppMockup() {
               <button
                 aria-label="Toggle theme"
                 type="button"
-                className="size-7 inline-flex items-center justify-center rounded-[2px] text-muted-foreground hover:bg-white/[0.04] hover:text-foreground/85 transition-colors"
+                className="size-7 inline-flex items-center justify-center rounded-md text-muted-foreground hover:bg-white/[0.04] hover:text-foreground/85 transition-colors"
               >
                 <SunIcon className="size-4 dark:hidden" />
                 <MoonIcon className="hidden dark:block size-4" />
@@ -359,7 +359,7 @@ function EventPanel() {
               <div key={i} className="bg-layer-1 h-20 p-1.5 relative">
                 <span className="text-muted-foreground/60">{day}</span>
                 {isMeeting && (
-                  <div className="absolute left-1.5 right-1.5 bottom-1.5 h-4 rounded-[2px] bg-blue-main/40 text-[10px] px-1 grid place-items-center text-foreground truncate">
+                  <div className="absolute left-1.5 right-1.5 bottom-1.5 h-4 rounded-sm bg-blue-main/40 text-[10px] px-1 grid place-items-center text-foreground truncate">
                     Meeting
                   </div>
                 )}

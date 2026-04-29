@@ -5,46 +5,39 @@ import { WaitlistForm } from "@/components/WaitlistForm";
 export function FinalCTA() {
   const c = siteCopy.finalCta;
   return (
-    <section id="waitlist" className="relative pt-12 md:pt-24 overflow-hidden scroll-mt-24">
+    <section className="relative flex items-center overflow-hidden scroll-mt-24 min-h-[560px] md:min-h-[680px]">
+      {/* Grass image as full-section backdrop. Wider than viewport so the
+          source image's bottom-right Gemini watermark is clipped by the
+          section's overflow-hidden. */}
       <div
         aria-hidden="true"
-        className="dither-xl pointer-events-none absolute inset-0 opacity-[0.18]"
-        style={{
-          maskImage:
-            "radial-gradient(48% 50% at 50% 35%, black 0%, transparent 100%)",
-          WebkitMaskImage:
-            "radial-gradient(48% 50% at 50% 35%, black 0%, transparent 100%)",
-        }}
-      />
-      <div className="relative mx-auto max-w-6xl px-6 lg:px-12 text-center pb-12">
-        <h2 className="font-display text-5xl md:text-7xl lg:text-[110px] font-black tracking-[0.01em] text-foreground leading-none">
-          {c.heading}
-        </h2>
-        <p className="mt-4 text-lg md:text-xl text-muted-foreground italic">
-          {c.sub}
-        </p>
-        <div className="mt-10 flex justify-center">
-          <WaitlistForm />
-        </div>
-      </div>
-
-      {/* Grass field strip beneath the CTA */}
-      <div className="relative w-full h-[260px] md:h-[340px]">
+        className="pointer-events-none absolute inset-y-0 left-0 w-[112%]"
+      >
         <Image
           src={c.grassImage}
           alt=""
           fill
-          sizes="100vw"
+          sizes="120vw"
           className="object-cover object-bottom"
         />
+        {/* Soft top blend so the section transitions in from above. */}
         <div
-          aria-hidden="true"
-          className="absolute inset-0"
+          className="absolute inset-x-0 top-0 h-40"
           style={{
             background:
-              "linear-gradient(to bottom, var(--color-background) 0%, transparent 35%)",
+              "linear-gradient(to bottom, var(--color-background) 0%, transparent 100%)",
           }}
         />
+      </div>
+
+      {/* Overlaid content */}
+      <div className="relative z-10 mx-auto w-full max-w-6xl px-6 lg:px-12 text-center py-20 md:py-28">
+        <h2 className="font-display text-5xl md:text-7xl lg:text-[110px] font-black tracking-[0.01em] text-black leading-none drop-shadow-[0_2px_8px_rgba(255,255,255,0.35)]">
+          {c.heading}
+        </h2>
+        <div className="mt-10 flex justify-center">
+          <WaitlistForm />
+        </div>
       </div>
     </section>
   );

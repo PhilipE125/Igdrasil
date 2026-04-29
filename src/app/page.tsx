@@ -1,13 +1,14 @@
-import { AgenticGuides } from "@/components/AgenticGuides";
+import { Roadmap } from "@/components/Roadmap";
+import { AgentApi } from "@/components/AgentApi";
 import { AiAssistant } from "@/components/AiAssistant";
 import { AutomationSkills } from "@/components/AutomationSkills";
 import { BuiltToScale } from "@/components/BuiltToScale";
 import { ContextGraph } from "@/components/ContextGraph";
-import { EngineersAgents } from "@/components/EngineersAgents";
 import { FinalCTA } from "@/components/FinalCTA";
 import { FounderNote } from "@/components/FounderNote";
 import { Hero } from "@/components/Hero";
 import { InvestorMarquee } from "@/components/InvestorMarquee";
+import { Pricing } from "@/components/Pricing";
 import { ProductFeatures } from "@/components/ProductFeatures";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -25,9 +26,10 @@ export default function Home() {
         <AutomationSkills />
         <Testimonial />
         <ContextGraph />
-        <EngineersAgents />
+        <AgentApi />
         <BuiltToScale />
-        <AgenticGuides />
+        <Pricing />
+        <Roadmap />
         <FounderNote />
         <FinalCTA />
       </main>

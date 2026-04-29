@@ -20,10 +20,10 @@ export function BuiltToScale() {
           {scaleCards.map((card, i) => (
             <div
               key={card.title}
-              className="border border-border bg-card p-6 rounded-[2px] flex flex-col gap-2"
+              className="border border-border bg-card p-6 rounded-2xl flex flex-col gap-2"
               style={{ minHeight: 200 }}
             >
-              <div className="size-8 rounded-[2px] bg-layer-3 border border-border grid place-items-center text-xs font-bold text-muted-foreground">
+              <div className="size-8 rounded-md bg-layer-3 border border-border grid place-items-center text-xs font-bold text-muted-foreground">
                 {i + 1}
               </div>
               <h3 className="text-lg font-semibold text-foreground mt-2">
@@ -35,7 +35,7 @@ export function BuiltToScale() {
             </div>
           ))}
 
-          <div className="lg:col-span-3 border border-border bg-card rounded-[2px] overflow-hidden grid lg:grid-cols-2">
+          <div className="lg:col-span-3 border border-border bg-card rounded-3xl overflow-hidden grid lg:grid-cols-2">
             <div className="p-8">
               <h3 className="text-2xl font-semibold text-foreground">{videoCard.title}</h3>
               <p className="mt-2 text-base text-muted-foreground max-w-md">

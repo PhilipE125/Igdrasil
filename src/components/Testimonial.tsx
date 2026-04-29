@@ -6,11 +6,11 @@ export function Testimonial() {
     <section className="relative overflow-hidden">
       <div className="absolute inset-0">
         <Image
-          src="/images/testimonial-bg-dark.jpg"
+          src="/images/igdrasil-meadow.webp"
           alt=""
           fill
           sizes="100vw"
-          className="object-cover"
+          className="object-cover object-top scale-[1.85]"
         />
         {/* Soft fade at the seams only — keep the sky image visible across most of the section */}
         <div

@@ -8,8 +8,24 @@
  *   3. (Optional) update `siteMeta` in `src/app/layout.tsx`
  */
 
+import {
+  BarChart3,
+  BookOpen,
+  CalendarClock,
+  FileText,
+  GitBranch,
+  Landmark,
+  Layers,
+  LayoutDashboard,
+  Mail,
+  Plug,
+  Receipt,
+  Send,
+  Sparkles,
+  Wallet,
+} from "lucide-react";
+
 import type {
-  AgenticGuideTab,
   AiItem,
   AutomationsTab,
   FeatureRow,
@@ -19,6 +35,7 @@ import type {
   NavDropdown,
   NavLink,
   PromptCard,
+  RoadmapMilestone,
   ScaleCard,
 } from "@/types/content";
 
@@ -33,7 +50,7 @@ export const siteCopy = {
     sub: "Focus on building. We'll handle the books. Bookkeeping, payroll, VAT, and reporting — automated and tailored for Swedish founders.",
     primaryCta: { label: "Get notified", href: "#waitlist" },
     secondaryCta: { label: "Talk to us" },
-    backgroundImage: "/images/sky-bg-dark.jpg",
+    backgroundImage: "/images/igdrasil-meadow.webp",
   },
   investors: {
     lead: "Built for Swedish founders, freelancers, and small teams who want",
@@ -66,11 +83,6 @@ export const siteCopy = {
     heading: "Every receipt, invoice, and report — connected",
     sub: "We pull data from Fortnox, your bank, and your billing tools into one accounting picture. No more spreadsheets to glue it all together.",
   },
-  engineersAgents: {
-    heading: "Designed for founders who'd rather build than bookkeep",
-    sub: "We do the accounting. You ship the product. Hands-on when you need us, automated when you don't.",
-    lovedByLabel: "Loved by teams like",
-  },
   builtToScale: {
     heading: "Built to scale with you",
     sub: "From your first invoice to your Series A — Igdrasil grows with the business, hands-on when needed and automated where it counts.",
@@ -81,20 +93,62 @@ export const siteCopy = {
       poster: "/images/grass-field.jpg",
     },
   },
-  agenticGuides: {
-    heading: "Get our pre-launch guide for Swedish founders",
-    sub: "A practical handbook to bookkeeping, VAT, payroll, and Bokföringslagen — written for founders, not accountants.",
-    downloadLabel: "Download",
-    emailPlaceholder: "you@email.com",
-    submitLabel: "Send me the guide",
-    successHint: "Sent. Check your inbox.",
-    aiToolsLabel: "We integrate with",
+  agentApi: {
+    eyebrow: "API-first",
+    heading: "Bring your own agents",
+    sub: "Igdrasil is API-first by design. Connect Claude, Cursor, your in-house agents, or any MCP-aware client and let them read your books, file VAT, draft reports, or push receipts — programmatically, on your behalf.",
+    lovedByLabel: "Loved by agents",
+    bullets: [
+      "Typed CLI and HTTP API for every entity — invoices, receipts, ledgers, payroll, VAT.",
+      "MCP server out of the box, so agents discover your accounting actions automatically.",
+      "Scoped tokens with per-agent audit trails — see exactly what each agent did, and when.",
+    ],
+    terminal: {
+      titleBar: "~/igdrasil — agent session",
+      lines: [
+        { kind: "prompt", text: "igdrasil invoices list --filter 'status=unpaid'" },
+        { kind: "ok", text: "Found 14 unpaid invoices" },
+        { kind: "child", text: "Acme AB <billing@acme.com> · 12,500 SEK · 3d late" },
+        { kind: "child", text: "Volvo Cars AB <ap@volvo.com> · 4,800 SEK · today" },
+        { kind: "child", text: "...and 12 more" },
+        { kind: "prompt", text: "igdrasil receipts upload ./q2/*.pdf" },
+        { kind: "ok", text: "Categorized 23 receipts in 1.2s" },
+        { kind: "child", text: "Travel: 9 · Meals: 6 · Software: 5 · Other: 3" },
+        { kind: "prompt", text: "igdrasil vat draft --period Q2-2026" },
+        { kind: "ok", text: "Draft VAT report ready for review" },
+        { kind: "child", text: "Outgoing: 184,250 SEK · Incoming: 42,180 SEK" },
+        { kind: "typing", text: "igdrasil ai summari" },
+      ],
+    },
+  },
+  pricing: {
+    eyebrow: "Pricing",
+    heading: "Built for business owners, not investors",
+    sub: "Every business is legally required to do accounting. We don't think a basic obligation should cost a fortune. Igdrasil is priced to be the most affordable line item on your P&L — a flat fee plus a small markup on AI workflows that actually deliver value.",
+    flatFeeLabel: "/ month flat",
+    markupLabel: "markup on token consumption",
+    simLabel: "Cost simulation",
+    invoicesLabel: "invoices / month",
+    breakdown: {
+      flat: "Flat fee",
+      tokens: "AI tokens",
+      markup: "Markup (10%)",
+      total: "Estimated total",
+    },
+    note: "No hidden fees. No per-seat pricing. No surprise invoices at year-end.",
+    cta: { label: "Get notified at launch", href: "#waitlist" },
+  },
+  roadmap: {
+    eyebrow: "Roadmap",
+    heading: "Building Igdrasil in the open",
+    sub: "We're shipping fast and showing our work. Here's what's live, what's next, and where we're headed.",
+    repoLabel: "Watch the repo",
+    repoHref: "https://github.com/igdrasil-ab",
     backgroundImage: "/images/micro-night-bg.png",
   },
   finalCta: {
     heading: "Beta launching soon",
-    sub: "Sign up to get notified when Igdrasil opens its doors.",
-    grassImage: "/images/grass-field.jpg",
+    grassImage: "/images/igdrasil-meadow.webp",
     primaryCta: { label: "Get notified", href: "#waitlist" },
     secondaryCta: { label: "Talk to us" },
   },
@@ -120,19 +174,27 @@ export const siteCopy = {
 
 export const navDropdowns: NavDropdown[] = [
   {
+    label: "Product",
+    items: [
+      { label: "Dashboard", href: "/#product", description: "Real-time view of your business finances.", Icon: LayoutDashboard },
+      { label: "AI Assistant", href: "/#product", description: "Ask anything about your books — answered instantly.", Icon: Sparkles },
+      { label: "Reports & Analytics", href: "/#product", description: "P&L, cash flow, and KPI dashboards on demand.", Icon: BarChart3 },
+      { label: "Integrations", href: "/#product", description: "Connect Fortnox, banks, and your stack.", Icon: Plug },
+    ],
+  },
+  {
     label: "Services",
     items: [
-      { label: "Bookkeeping", href: "/#services", description: "Day-to-day bookkeeping handled, reconciled, and audit-ready." },
-      { label: "Payroll", href: "/#services", description: "Salaries, taxes, and Skatteverket filings — automated." },
-      { label: "VAT", href: "/#services", description: "Quarterly VAT reports prepared and filed on time." },
-      { label: "Employer Reporting", href: "/#services", description: "AGI and employer declarations without the spreadsheets." },
-      { label: "Recurring Reports", href: "/#services", description: "Monthly P&L, cash flow, and KPI snapshots." },
+      { label: "Bookkeeping", href: "/#services", description: "Day-to-day bookkeeping handled, reconciled, and audit-ready.", Icon: BookOpen },
+      { label: "Payroll", href: "/#services", description: "Salaries, taxes, and Skatteverket filings — automated.", Icon: Wallet },
+      { label: "VAT", href: "/#services", description: "Quarterly VAT reports prepared and filed on time.", Icon: Receipt },
+      { label: "Employer Reporting", href: "/#services", description: "AGI and employer declarations without the spreadsheets.", Icon: FileText },
+      { label: "Recurring Reports", href: "/#services", description: "Monthly P&L, cash flow, and KPI snapshots.", Icon: CalendarClock },
     ],
   },
 ];
 
 export const navLinks: NavLink[] = [
-  { label: "About", href: "/#about" },
   { label: "Contact", href: "mailto:support@igdrasil.se" },
 ];
 
@@ -162,7 +224,38 @@ export const ecosystemLogos: InvestorLogo[] = [
 
 /* ───────────────────── #product accordion ─────────────────────────── */
 
-export const featureRows: FeatureRow[] = [
+export const productFeatureRows: FeatureRow[] = [
+  {
+    id: "dashboard",
+    title: "Dashboard",
+    description: "Real-time view of your business finances — books, bank, runway, all in one place.",
+    detail: "Numbers update continuously as transactions land. No spreadsheets to glue, no waiting for month-end.",
+    replaces: [],
+  },
+  {
+    id: "ai-assistant",
+    title: "AI Assistant",
+    description: "Ask anything about your books and get a plain-English answer in seconds.",
+    detail: "Reads your invoices, drafts reports, and flags anomalies before they become problems.",
+    replaces: [],
+  },
+  {
+    id: "reports-analytics",
+    title: "Reports & Analytics",
+    description: "P&L, cash flow, and KPI dashboards on demand — built for founders, not accountants.",
+    detail: "Drill into any number with one click. Export to PDF or share a live link with your board.",
+    replaces: [],
+  },
+  {
+    id: "integrations",
+    title: "Integrations",
+    description: "Plug in Fortnox, your bank, and the tools you already use — we handle the data flow.",
+    detail: "One-click connections to the Swedish accounting stack and the apps you run your business on.",
+    replaces: [],
+  },
+];
+
+export const serviceFeatureRows: FeatureRow[] = [
   {
     id: "bookkeeping",
     title: "Bookkeeping",
@@ -187,6 +280,13 @@ export const featureRows: FeatureRow[] = [
     title: "VAT",
     description: "Quarterly VAT reports prepared and filed with Skatteverket. No more deadlines on your calendar.",
     detail: "Reverse charge, EU sales, and import VAT — all handled correctly the first time.",
+    replaces: [],
+  },
+  {
+    id: "employer-reporting",
+    title: "Employer Reporting",
+    description: "AGI and employer declarations without the spreadsheets.",
+    detail: "Monthly arbetsgivardeklarationer prepared and filed — contributions, benefits, and beneficiaries all reconciled.",
     replaces: [],
   },
   {
@@ -224,89 +324,79 @@ export const aiItems: AiItem[] = [
 /* ───────────────────── #automations tabs ───────────────────────────── */
 
 const featuredCards = [
-  { emoji: "☀️", title: "Morning Briefing", description: "Start your day with a summary of your calendar, priorities, and unread emails.", href: "#" },
-  { emoji: "🔔", title: "Follow-up Finder", description: "Surface emails, tasks, and meetings that need follow-up.", href: "#" },
-  { emoji: "📥", title: "Inbox Triage", description: "Categorize unread emails by priority and suggest quick replies.", href: "#" },
-  { emoji: "📊", title: "Weekly Recap", description: "Full week summary — meetings, accomplishments, tasks, and goals.", href: "#" },
-  { emoji: "📋", title: "Meeting Prep", description: "Before every meeting, get a briefing on attendees, recent emails, and open tasks.", href: "#" },
-  { emoji: "🔬", title: "Contact Research", description: "Research newly added contacts and enrich their profiles automatically.", href: "#" },
+  { emoji: "📩", title: "Auto-read invoices", description: "Drop any PDF or photo. Supplier, amounts, VAT, dates — extracted and posted to the right account.", href: "#" },
+  { emoji: "🏦", title: "Auto-match bank lines", description: "Nordea, SEB, Swedbank, Handelsbanken — every transaction matched to its invoice.", href: "#" },
+  { emoji: "🪿", title: "Ask, then act", description: "The Goose assistant posts entries, approves invoices, and runs syncs straight from chat.", href: "#" },
+  { emoji: "💬", title: "Reports in plain Swedish", description: "'Show me Q2 VAT' or 'who's late paying me' — answered live, with charts inline.", href: "#" },
+  { emoji: "🔁", title: "Two-way Fortnox sync", description: "Vouchers, suppliers, projects, and SIE-4 files flow both ways. No copy-paste.", href: "#" },
+  { emoji: "🧾", title: "BAS auto-booking", description: "Every line classified to the right 4-digit BAS account, automatically.", href: "#" },
 ];
 
-const startupCards = [
-  { emoji: "💸", title: "Investor Pipeline", description: "Track every investor conversation across emails, meetings, and follow-ups.", href: "#" },
-  { emoji: "🚀", title: "Launch Tracker", description: "Co-ordinate launch tasks, partner reach-outs, and PR mentions in one view.", href: "#" },
-  { emoji: "📨", title: "VC Outreach", description: "Personalised cold-emails using LinkedIn signals and warm intros.", href: "#" },
-  { emoji: "🧑‍🤝‍🧑", title: "Hiring Loop", description: "Automate take-home reviews, scorecards, and candidate follow-ups.", href: "#" },
-  { emoji: "📈", title: "Metrics Pulse", description: "Daily revenue, signup, and retention summary in your inbox.", href: "#" },
-  { emoji: "🤝", title: "Partner Map", description: "Maintain partnership pipelines synced from Slack and email threads.", href: "#" },
+const receiptsCards = [
+  { emoji: "📷", title: "Snap & send", description: "Photo a receipt to your private Telegram bot — it lands in your books in seconds.", href: "#" },
+  { emoji: "📥", title: "Drag-and-drop upload", description: "PDFs, JPEGs, PNGs in. Bookkept entries out. No typing, no spreadsheets.", href: "#" },
+  { emoji: "📨", title: "Email-in inbox", description: "Forward bills to your private Igdrasil address — they appear in your books.", href: "#" },
+  { emoji: "🧾", title: "BAS classification", description: "Every line mapped to the correct Swedish BAS account, every time.", href: "#" },
+  { emoji: "💱", title: "FX-aware entries", description: "EUR / USD / anything — converted at the Riksbanken rate, to the öre.", href: "#" },
+  { emoji: "🔁", title: "Dedupe & lineage", description: "Duplicates blocked by content hash. Every entry linked back to its source document.", href: "#" },
 ];
 
-const investorCards = [
-  { emoji: "🧠", title: "Deal Memo", description: "Auto-draft investment memos from a founder call transcript.", href: "#" },
-  { emoji: "📚", title: "Portfolio Digest", description: "Weekly portfolio update synthesised from founder emails and decks.", href: "#" },
-  { emoji: "🔍", title: "Sourcing", description: "Discover companies that match your thesis and route them to your inbox.", href: "#" },
-  { emoji: "🗓️", title: "LP Updates", description: "Generate quarterly LP letters from your portfolio activity.", href: "#" },
-  { emoji: "🏷️", title: "Diligence Tracker", description: "Track diligence questions and references across deals.", href: "#" },
-  { emoji: "📊", title: "Market Map", description: "Continuously refreshed market maps for the sectors you cover.", href: "#" },
+const bankCards = [
+  { emoji: "🏦", title: "Statement import", description: "Juni, Lunar, Nordea, SEB, Swedbank, Handelsbanken, and Skatteverket CSV — all supported.", href: "#" },
+  { emoji: "🔎", title: "OCR fast-match", description: "Bank reference numbers (OCR) parsed and matched to invoices in milliseconds.", href: "#" },
+  { emoji: "🤝", title: "AI fallback match", description: "When OCR misses, the assistant finds the right invoice from amount, date, and supplier.", href: "#" },
+  { emoji: "💳", title: "Card expense rules", description: "Receipts paid on the company card classified by card last-four and expense rules.", href: "#" },
+  { emoji: "🪙", title: "Multi-account, multi-currency", description: "IBAN and currency per account, with reconciliation status at a glance.", href: "#" },
+  { emoji: "📤", title: "Bankgiro & PlusGiro", description: "Outgoing payments matched to supplier invoices, ready for your bank file.", href: "#" },
 ];
 
-const personalCards = [
-  { emoji: "🛏️", title: "Sleep Mode", description: "Silence everything but family and people you've replied to recently.", href: "#" },
-  { emoji: "🎁", title: "Birthday Reminders", description: "Surface birthdays from your contacts with thoughtful gift ideas.", href: "#" },
-  { emoji: "📝", title: "Journal", description: "Daily journal entries auto-drafted from your meetings and tasks.", href: "#" },
-  { emoji: "🍽️", title: "Dinner Plans", description: "Coordinate group dinners across emails and group chats.", href: "#" },
-  { emoji: "✈️", title: "Trip Brief", description: "Pull together itineraries, contacts, and reservations for any trip.", href: "#" },
-  { emoji: "🏃", title: "Habit Coach", description: "Track habits and nudge you toward your weekly goals.", href: "#" },
+const gooseCards = [
+  { emoji: "🪿", title: "Chat-driven actions", description: "Tell Goose to post a journal entry — it does it, with an approval card before anything posts.", href: "#" },
+  { emoji: "✅", title: "Approve in chat", description: "Send invoices, create suppliers, kick off Fortnox sync — straight from a message.", href: "#" },
+  { emoji: "🇸🇪", title: "Skatteverket-grounded", description: "Answers backed by an indexed knowledge base of current Swedish tax guidance.", href: "#" },
+  { emoji: "🌐", title: "Web research built in", description: "Goose can browse the web to verify org numbers, tax rules, and FX rates.", href: "#" },
+  { emoji: "🛠️", title: "60+ MCP tools", description: "Every Fortnox action — and every internal action — exposed as a tool the assistant can call.", href: "#" },
+  { emoji: "🔮", title: "Pick your model", description: "Anthropic Claude or Google Gemini — your choice, configurable per user and per company.", href: "#" },
 ];
 
-const emailCards = [
-  { emoji: "✉️", title: "Reply Drafts", description: "Pre-written replies in your tone, ready to send.", href: "#" },
-  { emoji: "🧹", title: "Inbox Sweep", description: "Archive newsletters and announcements automatically.", href: "#" },
-  { emoji: "⏰", title: "Follow-up Nudges", description: "Remind you to follow up on emails left without a reply.", href: "#" },
-  { emoji: "🗒️", title: "Snippets", description: "Reusable snippets pulled from past replies.", href: "#" },
-  { emoji: "🪄", title: "Smart Forward", description: "Forward emails with one-click summaries and asks.", href: "#" },
-  { emoji: "🔇", title: "Mute Threads", description: "Mute noisy threads with smart resurfacing.", href: "#" },
+const reportsCards = [
+  { emoji: "💬", title: "Ask in plain language", description: "'Show me Q2 VAT', 'cash flow last month', 'top 5 suppliers' — answered live.", href: "#" },
+  { emoji: "📈", title: "Live KPIs", description: "Net profit, revenue, expenses, document count — updated the moment something changes.", href: "#" },
+  { emoji: "🧾", title: "Momsdeklaration", description: "VAT form SKV 4700 computed automatically — standard, reduced, reverse charge, exports.", href: "#" },
+  { emoji: "🪞", title: "Trial balance & P&L", description: "Full COA balances and statements on demand. Auditor-ready exports in seconds.", href: "#" },
+  { emoji: "📑", title: "INK2 & NE-bilaga", description: "Year-end tax filings drafted with the numbers already in place.", href: "#" },
+  { emoji: "🧮", title: "Custom charts inline", description: "Ask for a chart in chat — get a chart, with the underlying numbers a click away.", href: "#" },
 ];
 
-const crmCards = [
-  { emoji: "🔗", title: "Auto-link", description: "Link contacts, companies, and deals from every conversation.", href: "#" },
-  { emoji: "🔄", title: "Pipeline Sync", description: "Move deals through stages from email and meeting signals.", href: "#" },
-  { emoji: "📇", title: "Profile Enrichment", description: "Pull job titles, companies, and links into contact records.", href: "#" },
-  { emoji: "📊", title: "Relationship Score", description: "Surface who you're losing touch with and prompt re-connections.", href: "#" },
-  { emoji: "🔔", title: "Stale Deal Alerts", description: "Get warned before a deal goes cold.", href: "#" },
-  { emoji: "🧾", title: "Custom Properties", description: "Track anything you care about with custom fields.", href: "#" },
-];
-
-const projectCards = [
-  { emoji: "📋", title: "Auto-tasks", description: "Spin up tasks from emails and meeting notes automatically.", href: "#" },
-  { emoji: "🗂️", title: "Project Kickoff", description: "Bootstrap a project workspace from a single brief.", href: "#" },
-  { emoji: "📅", title: "Standup Digest", description: "Daily standup digest pulled from PRs, tasks, and Slack.", href: "#" },
-  { emoji: "🧭", title: "Roadmap Sync", description: "Keep public roadmaps in sync with internal task statuses.", href: "#" },
-  { emoji: "🪧", title: "Status Reports", description: "Weekly project status reports written for you.", href: "#" },
-  { emoji: "🚦", title: "Risk Watch", description: "Spot delivery risks before they slip the schedule.", href: "#" },
+const fortnoxCards = [
+  { emoji: "🔁", title: "Two-way sync", description: "Vouchers, suppliers, accounts, fiscal years, projects, and cost centers — all kept in lockstep.", href: "#" },
+  { emoji: "📎", title: "Vouchers + attachments", description: "Push journal entries with their source PDFs attached, in a single call.", href: "#" },
+  { emoji: "🏢", title: "Bureau (byrå) mode", description: "Run multiple client companies from one accountancy login.", href: "#" },
+  { emoji: "📥", title: "SIE-4 import", description: "Bring your history in: account mapping, opening balances, vouchers — nothing left behind.", href: "#" },
+  { emoji: "📤", title: "SIE-4 export", description: "Leave whenever you want. Your full ledger, in the Swedish standard format.", href: "#" },
+  { emoji: "⏱️", title: "Rate-limit aware", description: "Built for Fortnox's 4 req/sec ceiling — nothing dropped, nothing duplicated.", href: "#" },
 ];
 
 export const automationsTabs: AutomationsTab[] = [
   { id: "featured", label: "Featured", cards: featuredCards },
-  { id: "startups", label: "Startups", cards: startupCards },
-  { id: "investors", label: "Investors", cards: investorCards },
-  { id: "personal", label: "Personal", cards: personalCards },
-  { id: "email", label: "Email & Messaging", cards: emailCards },
-  { id: "crm", label: "CRM", cards: crmCards },
-  { id: "projects", label: "Projects", cards: projectCards },
+  { id: "receipts", label: "Receipts & Invoices", cards: receiptsCards },
+  { id: "bank", label: "Bank Matching", cards: bankCards },
+  { id: "goose", label: "Goose Assistant", cards: gooseCards },
+  { id: "reports", label: "Reports & Insights", cards: reportsCards },
+  { id: "fortnox", label: "Fortnox Sync", cards: fortnoxCards },
 ];
 
 /* ───────────────────── prompt grid ───────────────────────────────── */
 
 export const promptCards: PromptCard[] = [
-  { title: "Prep me", description: "Get prepared for your next meeting with context and talking points." },
-  { title: "Draft email", description: "Draft a professional email based on context from your CRM and past threads." },
-  { title: "Research person", description: "Get comprehensive background on any person in your network." },
-  { title: "Summarize thread", description: "Get a clear summary of an email thread or discussion." },
-  { title: "Intro", description: "Draft a warm intro email connecting two people." },
-  { title: "Research", description: "Deep research on a person, company, or topic using web + your data." },
-  { title: "What did I do", description: "Summarize what you've been working on recently." },
-  { title: "Find all", description: "Build lists of entities matching specific criteria." },
+  { title: "Run month-end", description: "Close last month: post adjustments, run Momsdeklaration, file." },
+  { title: "Match the bank", description: "Reconcile every transaction in this month's statement." },
+  { title: "Show VAT", description: "What do I owe Skatteverket this quarter?" },
+  { title: "Book this receipt", description: "Take this PDF, classify it, and post the entry." },
+  { title: "Sync to Fortnox", description: "Push open vouchers from this period to Fortnox." },
+  { title: "Late payers", description: "Which customers are more than 30 days overdue?" },
+  { title: "Burn rate", description: "How much cash am I burning each month, and where does it go?" },
+  { title: "Find the invoice", description: "Pull up the Vattenfall invoice from March." },
 ];
 
 /* ───────────────────── floating context cards (decorative) ──────── */
@@ -429,34 +519,62 @@ export const scaleCards: ScaleCard[] = [
 
 /* ───────────────────── agentic guides ──────────────────────────────── */
 
-export const agenticGuides: AgenticGuideTab[] = [
+export const roadmapMilestones: RoadmapMilestone[] = [
   {
-    id: "fundraising",
-    label: "Agentic Fundraising",
-    title: "Agentic Fundraising",
-    description: "39 skills, 6 agents, and curated resources for raising venture capital.",
-    stats: "Skills & Strategies",
+    id: "open-source",
+    status: "now",
+    statusLabel: "Next up",
+    title: "Open source on GitHub",
+    description:
+      "Putting the engine in the open. Read the code, file issues, contribute, or self-host — Igdrasil built in public.",
+    Icon: GitBranch,
+    highlighted: true,
   },
   {
-    id: "investing",
-    label: "Agentic Startup Investing",
-    title: "Agentic Startup Investing",
-    description: "Tools for investors — sourcing, diligence, portfolio support, and LP reporting.",
-    stats: "Skills & Strategies",
+    id: "email-inbox",
+    status: "soon",
+    statusLabel: "Soon",
+    title: "Forward invoices to a private inbox",
+    description:
+      "Send bills to your private Igdrasil address — no upload, no app, no friction.",
+    Icon: Mail,
   },
   {
-    id: "sales",
-    label: "Agentic Sales",
-    title: "Agentic Sales",
-    description: "Pipeline, outreach, and renewals — agents that move every deal forward.",
-    stats: "Skills & Strategies",
+    id: "telegram",
+    status: "soon",
+    statusLabel: "Soon",
+    title: "Telegram integration",
+    description:
+      "Snap a receipt and send it to your private Igdrasil bot — it lands straight in your automated accounting flow.",
+    Icon: Send,
   },
   {
-    id: "hiring",
-    label: "Agentic Hiring",
-    title: "Agentic Hiring",
-    description: "Source, screen, schedule, and close — every step of hiring on autopilot.",
-    stats: "Skills & Strategies",
+    id: "gocardless",
+    status: "soon",
+    statusLabel: "Soon",
+    title: "GoCardless bank sync",
+    description:
+      "Connect your bank account directly. Transactions pulled and reconciled up to four times a day.",
+    Icon: Landmark,
+  },
+  {
+    id: "wages",
+    status: "soon",
+    statusLabel: "Soon",
+    title: "Wages and Skatteverket filings",
+    description:
+      "Run payroll and upload compliant employer documents — AGI, arbetsgivardeklaration — straight to Skatteverket.",
+    Icon: Wallet,
+  },
+  {
+    id: "standalone",
+    status: "soon",
+    statusLabel: "Soon",
+    title: "A fully compliant standalone accounting platform",
+    description:
+      "Igdrasil isn't just an AI layer bolted onto someone else's tool. It's a complete Swedish accounting suite — ledger, reports, filings — fused with our AI automations from day one.",
+    Icon: Layers,
+    highlighted: true,
   },
 ];
 
@@ -464,13 +582,22 @@ export const agenticGuides: AgenticGuideTab[] = [
 
 export const footerColumns: FooterColumn[] = [
   {
+    heading: "Product",
+    links: [
+      { label: "Dashboard", href: "/#product" },
+      { label: "AI Assistant", href: "/#product" },
+      { label: "Reports & Analytics", href: "/#product" },
+      { label: "Integrations", href: "/#product" },
+    ],
+  },
+  {
     heading: "Services",
     links: [
-      { label: "Bookkeeping", href: "/#services" },
-      { label: "Payroll", href: "/#services" },
-      { label: "VAT", href: "/#services" },
-      { label: "Employer Reporting", href: "/#services" },
-      { label: "Recurring Reports", href: "/#services" },
+      { label: "Bookkeeping", href: "/#product" },
+      { label: "Payroll", href: "/#product" },
+      { label: "VAT", href: "/#product" },
+      { label: "Employer Reporting", href: "/#product" },
+      { label: "Recurring Reports", href: "/#product" },
     ],
   },
   {
@@ -712,24 +839,6 @@ export const heroMockupContent = {
   },
 } as const;
 
-/* ───────────────────── engineers / agents terminal lines ────────── */
-
-export const terminalLines: Array<
-  | { type: "command"; text: string }
-  | { type: "out-ok"; text: string }
-  | { type: "out"; text: string }
-  | { type: "out-typing"; text: string }
-> = [
-  { type: "command", text: "micro contacts list --filter 'stage=lead'" },
-  { type: "out-ok", text: "Found 47 contacts" },
-  { type: "out", text: " ↳ Sarah Chen <sarah@acme.com>" },
-  { type: "out", text: " ↳ James Park <james@startupxyz.com>" },
-  { type: "out", text: " ↳ ...and 44 more" },
-  { type: "command", text: "micro threads sync --inbox primary" },
-  { type: "out-ok", text: "Synced 12 threads from primary inbox" },
-  { type: "out-typing", text: "micro ai summari" },
-];
-
 /* ───────────────────── testimonial ───────────────────────────────── */
 
 export const testimonial = {
@@ -763,7 +872,3 @@ export const agentLogos = [
   { name: "Hermes", src: "/images/logos/hermes-agent.jpg" },
 ];
 
-export const aiToolLogos = [
-  { name: "Cursor", src: "/images/brand/cursor-com-dark.png" },
-  { name: "OpenClaw", src: "/images/brand/openclaw-cdn.png" },
-];

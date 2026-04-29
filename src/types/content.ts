@@ -10,7 +10,12 @@ export interface NavLink {
 
 export interface NavDropdown {
   label: string;
-  items: { label: string; href: string; description?: string }[];
+  items: {
+    label: string;
+    href: string;
+    description?: string;
+    Icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  }[];
 }
 
 export interface InvestorLogo {
@@ -68,12 +73,18 @@ export interface ScaleCard {
   description: string;
 }
 
-export interface AgenticGuideTab {
+export type RoadmapStatus = "live" | "now" | "soon" | "next" | "later";
+
+export interface RoadmapMilestone {
   id: string;
-  label: string;
+  status: RoadmapStatus;
+  /** Short pill label, e.g. "Live", "Soon", "Next". */
+  statusLabel: string;
   title: string;
   description: string;
-  stats: string;
+  Icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  /** Visually feature this milestone (the open-source moment). */
+  highlighted?: boolean;
 }
 
 export interface FooterColumn {

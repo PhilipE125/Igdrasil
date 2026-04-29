@@ -17,7 +17,7 @@ Every component reads from `src/lib/content.ts`. To rebrand the site you only ne
 | Floating context cards (decorative) | `contextCards`, `contextGraphFeatures` | `ContextGraph` |
 | Engineers/Agents terminal lines | `terminalLines`, `agentLogos` | `EngineersAgents` |
 | Built-to-scale cards | `scaleCards` | `BuiltToScale` |
-| Agentic guide tabs + AI tool logos | `agenticGuides`, `aiToolLogos` | `AgenticGuides` |
+| Roadmap milestones | `roadmapMilestones` | `Roadmap` |
 | Founder note | `founderNote` | `FounderNote` |
 | Footer columns | `footerColumns` | `SiteFooter` |
 

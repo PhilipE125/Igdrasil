@@ -1,5 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
-import { LinkedInIcon, MicroLogoIcon, XSocialIcon } from "@/components/icons";
+import { LinkedInIcon, XSocialIcon } from "@/components/icons";
 import { footerColumns, siteCopy } from "@/lib/content";
 
 export function SiteFooter() {
@@ -7,10 +8,17 @@ export function SiteFooter() {
   return (
     <footer className="bg-background border-t border-border py-16">
       <div className="mx-auto max-w-6xl px-6 lg:px-12">
-        <div className="grid lg:grid-cols-[1.4fr_repeat(4,1fr)] gap-10">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-[1.4fr_repeat(4,1fr)] gap-10">
           <div>
-            <Link aria-label="go home" href="/" className="text-foreground inline-block">
-              <MicroLogoIcon className="w-auto h-5" />
+            <Link
+              aria-label="go home"
+              href="/"
+              className="inline-flex items-center gap-2 text-foreground hover:opacity-80 transition-opacity"
+            >
+              <Image src="/logo.svg" alt="" width={28} height={28} className="size-7" />
+              <span className="font-display text-xl font-semibold tracking-wider">
+                Igdrasil
+              </span>
             </Link>
             <p className="mt-4 text-sm text-muted-foreground max-w-xs">{f.tagline}</p>
             <div className="mt-5 flex items-center gap-2">

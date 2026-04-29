@@ -34,7 +34,7 @@ export function AutomationSkills() {
                 type="button"
                 onClick={() => setActiveTab(tab.id)}
                 className={cn(
-                  "h-9 px-4 rounded-[2px] text-sm font-semibold transition-all",
+                  "h-9 px-4 rounded-md text-sm font-semibold transition-all",
                   isActive
                     ? "bg-card text-foreground border border-border"
                     : "text-muted-foreground hover:text-foreground hover:bg-white/[0.04]",
@@ -51,7 +51,7 @@ export function AutomationSkills() {
             <Link
               key={card.title}
               href={card.href}
-              className="group border border-border bg-card hover:bg-layer-3 transition-colors p-5 rounded-[2px]"
+              className="group border border-border bg-card hover:bg-layer-3 transition-colors p-5 rounded-2xl"
             >
               <div className="text-2xl mb-3" aria-hidden="true">{card.emoji}</div>
               <h3 className="text-base font-semibold text-foreground group-hover:underline">
@@ -68,7 +68,7 @@ export function AutomationSkills() {
           {promptCards.map((p) => (
             <div
               key={p.title}
-              className="border border-border p-4 rounded-[2px] bg-layer-2/40"
+              className="border border-border p-4 rounded-xl bg-layer-2/40"
             >
               <h3 className="text-sm font-semibold text-foreground">{p.title}</h3>
               <p className="mt-1 text-xs text-muted-foreground leading-snug">

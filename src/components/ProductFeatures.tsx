@@ -3,12 +3,27 @@
 import Image from "next/image";
 import { useState } from "react";
 import { ChevronDownIcon } from "@/components/icons";
-import { featureRows, siteCopy } from "@/lib/content";
+import {
+  productFeatureRows,
+  serviceFeatureRows,
+  siteCopy,
+} from "@/lib/content";
 import { cn } from "@/lib/utils";
 
+type Tab = "product" | "services";
+
 export function ProductFeatures() {
-  const [openId, setOpenId] = useState<string>(featureRows[0].id);
+  const [tab, setTab] = useState<Tab>("product");
+  const rows = tab === "product" ? productFeatureRows : serviceFeatureRows;
+  const [openId, setOpenId] = useState<string>(rows[0].id);
   const { heading, sub, replacesLabel } = siteCopy.product;
+
+  const switchTab = (next: Tab) => {
+    if (next === tab) return;
+    const nextRows = next === "product" ? productFeatureRows : serviceFeatureRows;
+    setTab(next);
+    setOpenId(nextRows[0].id);
+  };
 
   return (
     <section
@@ -16,7 +31,7 @@ export function ProductFeatures() {
       className="bg-background @container flex min-h-dvh items-center py-24"
     >
       <div className="mx-auto w-full max-w-6xl px-6 lg:px-12">
-        <div className="text-center mb-12 md:mb-16">
+        <div className="text-center mb-10 md:mb-12">
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-black tracking-[0.02em] text-foreground">
             {heading}
           </h2>
@@ -25,15 +40,44 @@ export function ProductFeatures() {
           </p>
         </div>
 
+        <div className="mb-10 flex justify-center">
+          <div
+            role="tablist"
+            aria-label="Product or services"
+            className="inline-flex rounded-full border border-border bg-card p-1 shadow-sm"
+          >
+            {(["product", "services"] as const).map((t) => {
+              const active = tab === t;
+              return (
+                <button
+                  key={t}
+                  role="tab"
+                  type="button"
+                  aria-selected={active}
+                  onClick={() => switchTab(t)}
+                  className={cn(
+                    "px-5 py-1.5 rounded-full text-sm font-semibold transition-colors",
+                    active
+                      ? "bg-foreground text-background shadow-[inset_0_-2px_0_0_rgba(0,0,0,0.2)]"
+                      : "text-foreground/70 hover:text-foreground",
+                  )}
+                >
+                  {t === "product" ? "Product" : "Services"}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
         <div className="mx-auto max-w-3xl">
-          {featureRows.map((row, i) => {
+          {rows.map((row, i) => {
             const open = openId === row.id;
             return (
               <div
                 key={row.id}
                 className={cn(
                   "border-t border-border",
-                  i === featureRows.length - 1 && "border-b",
+                  i === rows.length - 1 && "border-b",
                 )}
               >
                 <button
@@ -63,23 +107,25 @@ export function ProductFeatures() {
                       {row.description}
                     </p>
                     <p className="mt-2 text-sm text-muted-foreground">{row.detail}</p>
-                    <div className="mt-5 flex items-center gap-4">
-                      <span className="text-xs uppercase tracking-wider text-subtle-foreground">
-                        {replacesLabel}
-                      </span>
-                      <div className="flex items-center gap-3 opacity-90">
-                        {row.replaces.map((r) => (
-                          <Image
-                            key={r.name}
-                            src={r.src}
-                            alt={r.name}
-                            width={28}
-                            height={28}
-                            className="h-7 w-7 object-contain"
-                          />
-                        ))}
+                    {row.replaces.length > 0 && (
+                      <div className="mt-5 flex items-center gap-4">
+                        <span className="text-xs uppercase tracking-wider text-subtle-foreground">
+                          {replacesLabel}
+                        </span>
+                        <div className="flex items-center gap-3 opacity-90">
+                          {row.replaces.map((r) => (
+                            <Image
+                              key={r.name}
+                              src={r.src}
+                              alt={r.name}
+                              width={28}
+                              height={28}
+                              className="h-7 w-7 object-contain"
+                            />
+                          ))}
+                        </div>
                       </div>
-                    </div>
+                    )}
                   </div>
                 </div>
               </div>

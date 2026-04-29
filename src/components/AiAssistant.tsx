@@ -34,7 +34,7 @@ export function AiAssistant() {
                   aria-expanded={open}
                   onClick={() => setActiveId(item.id)}
                   className={cn(
-                    "text-left p-5 border border-border transition-all rounded-[2px]",
+                    "text-left p-5 border border-border transition-all rounded-2xl",
                     open ? "bg-card" : "bg-transparent hover:bg-white/[0.02]",
                   )}
                 >
@@ -47,7 +47,7 @@ export function AiAssistant() {
             })}
           </div>
 
-          <div className="relative aspect-[4/3] bg-card border border-border rounded-[2px] overflow-hidden">
+          <div className="relative aspect-[4/3] bg-card border border-border rounded-3xl overflow-hidden">
             <div className="absolute inset-0 dither-lg opacity-[0.15]" />
             <div className="absolute inset-0 grid place-items-center p-8">
               <div className="bg-layer-3 ring-1 ring-foreground/10 rounded-[8px] p-5 max-w-sm w-full shadow-2xl">
