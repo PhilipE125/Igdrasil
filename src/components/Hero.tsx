@@ -52,11 +52,8 @@ export function Hero() {
       <div className="relative z-10 pt-24 md:pt-32 lg:pt-40 pb-0">
         <div className="mx-auto max-w-6xl px-6 text-center lg:px-12">
           <div className="mb-8">
-            <div className="mx-auto max-w-3xl rounded-2xl border border-border bg-card/85 backdrop-blur-md px-6 py-5 sm:px-8 sm:py-6 shadow-sm">
-              <span className="block text-center text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
-                {hero.beta.eyebrow}
-              </span>
-              <div className="mt-3 flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-8">
+            <div className="mx-auto max-w-2xl rounded-2xl border border-border bg-card/85 backdrop-blur-md px-5 py-4 sm:px-7 sm:py-5 shadow-sm">
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
                 <div className="text-center sm:text-left">
                   <p className="text-sm font-semibold text-foreground">
                     {hero.beta.offer}
