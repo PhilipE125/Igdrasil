@@ -44,7 +44,7 @@ export const siteCopy = {
     launchVideoLabel: "Beta launching soon",
     launchVideoThumb: "/images/video-thumb-brett.png",
     heading: "Accounting that scales with you",
-    sub: "Focus on building. We'll handle the books. Bookkeeping, payroll, VAT, and reporting — automated and tailored for Swedish founders.",
+    sub: "Automated accounting software for bookkeeping, payroll, VAT, and reporting. Pricing that doesn't run away as you scale.",
     primaryCta: { label: "Get notified", href: "#waitlist" },
     secondaryCta: { label: "Talk to us" },
     backgroundImage: "/images/igdrasil-meadow.webp",
