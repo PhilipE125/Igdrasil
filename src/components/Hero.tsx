@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { HeroAppMockup } from "@/components/HeroAppMockup";
 import { siteCopy } from "@/lib/content";
 
 export function Hero() {
@@ -73,8 +72,6 @@ export function Hero() {
             </button>
           </div>
         </div>
-
-        <HeroAppMockup />
       </div>
     </section>
   );
