@@ -24,7 +24,6 @@ import {
 } from "lucide-react";
 
 import type {
-  AiItem,
   AutomationsTab,
   FeatureRow,
   FloatingContextCard,
@@ -66,13 +65,6 @@ export const siteCopy = {
   ai: {
     heading: "Your books, in conversation",
     sub: "Ask Igdrasil anything about your finances. Our assistant learns your business and turns numbers into plain answers — no spreadsheets, no jargon.",
-    workingCardLabel: "Igdrasil · Working",
-    workingLines: [
-      "Reading invoices from Q2…",
-      "Found 4 deductible expenses.",
-      "Updated VAT report → ready to file.",
-      "Drafted summary for your accountant.",
-    ],
   },
   automations: {
     heading: "Skills and automations that handle the books for you",
@@ -291,29 +283,6 @@ export const serviceFeatureRows: FeatureRow[] = [
     description: "Monthly P&L, cash flow snapshot, and KPI dashboards — delivered to your inbox.",
     detail: "Plain-English summaries with the numbers that matter most to founders.",
     replaces: [],
-  },
-];
-
-/* ───────────────────── #ai expandable ─────────────────────────────── */
-
-export const aiItems: AiItem[] = [
-  {
-    id: "answers",
-    leadPhrase: "Answers in plain English",
-    description:
-      "ask anything about your books — VAT due, runway, profitability — and get a straight answer.",
-  },
-  {
-    id: "reads",
-    leadPhrase: "Reads your receipts and invoices",
-    description:
-      "drag and drop a PDF or photo, and the right entries land in the right accounts automatically.",
-  },
-  {
-    id: "compliance",
-    leadPhrase: "Keeps you compliant",
-    description:
-      "filings, deadlines, and Bokföringslagen requirements tracked and handled in the background.",
   },
 ];
 

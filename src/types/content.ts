@@ -35,13 +35,6 @@ export interface FeatureRow {
   badge?: string;
 }
 
-/** Item in the "AI assistant" expanding list. */
-export interface AiItem {
-  id: string;
-  leadPhrase: string;
-  description: string;
-}
-
 /** Skill card in the "Skills and automations" tabbed grid. */
 export interface SkillCard {
   emoji: string;

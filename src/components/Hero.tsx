@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { HeroAppMockup } from "@/components/HeroAppMockup";
 import { siteCopy } from "@/lib/content";
 
 export function Hero() {
@@ -103,8 +102,6 @@ export function Hero() {
             </p>
           </div>
         </div>
-
-        <HeroAppMockup />
       </div>
     </section>
   );
