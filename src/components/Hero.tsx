@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { DemoApp } from "@/components/DemoApp";
 import { siteCopy } from "@/lib/content";
 
 export function Hero() {
@@ -19,7 +20,7 @@ export function Hero() {
     }, 1200);
   };
   return (
-    <section className="bg-background relative min-h-[640px] md:min-h-[920px] lg:min-h-[1180px]">
+    <section className="bg-background relative">
       <div
         aria-hidden="true"
         className="dither-xl pointer-events-none absolute inset-0 opacity-[0.25]"
@@ -48,7 +49,7 @@ export function Hero() {
         />
       </div>
 
-      <div className="relative z-10 pt-24 md:pt-32 lg:pt-40 pb-20">
+      <div className="relative z-10 pt-24 md:pt-32 lg:pt-40 pb-0">
         <div className="mx-auto max-w-6xl px-6 text-center lg:px-12">
           <button
             type="button"
@@ -103,6 +104,8 @@ export function Hero() {
           </div>
         </div>
       </div>
+
+      <DemoApp />
     </section>
   );
 }

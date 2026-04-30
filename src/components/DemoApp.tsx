@@ -76,7 +76,7 @@ export function DemoApp() {
   };
 
   return (
-    <section className="bg-background py-12 sm:py-20 md:py-28">
+    <section className="relative z-10 pt-6 pb-12 sm:py-20 md:py-28">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-12">
         <div className="rounded-xl sm:rounded-2xl shadow-2xl bg-white border border-black/10 overflow-hidden flex flex-col h-[600px] sm:h-[680px] md:h-[700px] relative">
           <div className="flex flex-1 min-h-0">
