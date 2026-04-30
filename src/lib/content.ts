@@ -50,11 +50,15 @@ export const siteCopy = {
     backgroundImage: "/images/igdrasil-meadow.webp",
   },
   investors: {
-    lead: "Built for Swedish founders, freelancers, and small teams who want",
-    /** Words rendered with stronger weight. */
-    emphasis: ["clarity", "speed"],
-    conjunction: "and",
-    final: "compliance without the admin",
+    text: "Built for business owners and accounting firms that want less admin with streamlined workflows and transparent pricing.",
+    beta: {
+      eyebrow: "Beta launching soon",
+      offer: "First 100 users",
+      price: "25 SEK / month",
+      markup: "+ 10% markup on token consumption",
+      note: "No add-on fees, ever.",
+      cta: { label: "Join the beta", href: "#waitlist" },
+    },
   },
   product: {
     heading: "What we offer",
