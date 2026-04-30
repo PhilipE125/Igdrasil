@@ -48,9 +48,6 @@ export const siteCopy = {
     primaryCta: { label: "Get notified", href: "#waitlist" },
     secondaryCta: { label: "Talk to us" },
     backgroundImage: "/images/igdrasil-meadow.webp",
-  },
-  investors: {
-    text: "Built for business owners and accounting firms that want less admin with streamlined workflows and transparent pricing.",
     beta: {
       eyebrow: "Beta launching soon",
       offer: "First 100 users",

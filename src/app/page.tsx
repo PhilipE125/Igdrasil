@@ -7,7 +7,6 @@ import { ContextGraph } from "@/components/ContextGraph";
 import { FinalCTA } from "@/components/FinalCTA";
 import { FounderNote } from "@/components/FounderNote";
 import { Hero } from "@/components/Hero";
-import { InvestorMarquee } from "@/components/InvestorMarquee";
 import { Pricing } from "@/components/Pricing";
 import { ProductFeatures } from "@/components/ProductFeatures";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -20,7 +19,6 @@ export default function Home() {
       <SiteHeader />
       <main>
         <Hero />
-        <InvestorMarquee />
         <ProductFeatures />
         <AiAssistant />
         <AutomationSkills />
