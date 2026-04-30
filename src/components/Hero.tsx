@@ -51,47 +51,6 @@ export function Hero() {
 
       <div className="relative z-10 pt-24 md:pt-32 lg:pt-40 pb-0">
         <div className="mx-auto max-w-6xl px-6 text-center lg:px-12">
-          <div className="mb-6 sm:mb-8">
-            <div className="mx-auto max-w-[340px] sm:max-w-xl rounded-xl sm:rounded-2xl border border-border bg-card/85 backdrop-blur-md px-3 py-2 sm:px-6 sm:py-4 shadow-sm">
-              <div className="flex flex-row items-center justify-between gap-3 sm:gap-5">
-                <div className="text-left leading-tight min-w-0">
-                  <p className="text-[8px] sm:text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                    {hero.beta.offer}
-                  </p>
-                  <p className="mt-0.5 sm:mt-1">
-                    <span className="font-display text-base sm:text-3xl font-bold text-foreground">
-                      {hero.beta.price}
-                    </span>
-                  </p>
-                  <p>
-                    <span className="font-display text-[10px] sm:text-lg font-bold text-foreground/85">
-                      {hero.beta.markup}
-                    </span>
-                  </p>
-                  <p className="mt-0.5 sm:mt-1 text-[8px] sm:text-[11px] text-muted-foreground">
-                    {hero.beta.note}
-                  </p>
-                </div>
-                <a
-                  href={hero.beta.cta.href}
-                  onClick={(e) => {
-                    if (hero.beta.cta.href !== "#waitlist") return;
-                    e.preventDefault();
-                    const target = document.getElementById("waitlist");
-                    const input = document.getElementById(
-                      "waitlist-email",
-                    ) as HTMLInputElement | null;
-                    target?.scrollIntoView({ behavior: "smooth", block: "center" });
-                    setTimeout(() => input?.focus({ preventScroll: true }), 600);
-                  }}
-                  className="inline-flex h-7 sm:h-9 shrink-0 items-center justify-center rounded-md sm:rounded-lg bg-foreground px-2.5 sm:px-4 text-[10px] sm:text-sm font-semibold text-background shadow-[inset_0_-2px_0_0_rgba(0,0,0,0.2)] hover:bg-foreground/85 hover:shadow-none transition-all"
-                >
-                  {hero.beta.cta.label}
-                </a>
-              </div>
-            </div>
-          </div>
-
           <h1 className="font-display text-balance text-4xl font-black tracking-[0.02em] sm:text-6xl lg:text-7xl text-black lg:leading-none">
             {hero.heading}
           </h1>
