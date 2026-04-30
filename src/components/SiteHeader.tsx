@@ -301,7 +301,7 @@ export function SiteHeader() {
         aria-hidden={openId ? "true" : "false"}
         className={cn(
           "pointer-events-auto relative bg-popover/50 ring-1 ring-border shadow-md shadow-black/[0.065] backdrop-blur-xl",
-          "rounded-b-xl rounded-t-none border-t-0 -mt-px",
+          "rounded-xl -mt-px",
           "max-w-[calc(100vw-1rem)] md:max-w-[760px]",
           "px-4 sm:px-6 py-1 sm:py-1.5",
           "transition-all duration-200 ease-out origin-top",
