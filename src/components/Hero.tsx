@@ -52,21 +52,23 @@ export function Hero() {
       <div className="relative z-10 pt-24 md:pt-32 lg:pt-40 pb-0">
         <div className="mx-auto max-w-6xl px-6 text-center lg:px-12">
           <div className="mb-8">
-            <div className="mx-auto max-w-2xl rounded-2xl border border-border bg-card/85 backdrop-blur-md px-5 py-4 sm:px-7 sm:py-5 shadow-sm">
-              <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
-                <div className="text-center sm:text-left">
-                  <p className="text-sm font-semibold text-foreground">
+            <div className="mx-auto max-w-xl rounded-2xl border border-border bg-card/85 backdrop-blur-md px-5 py-3.5 sm:px-6 sm:py-4 shadow-sm">
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-5">
+                <div className="text-center sm:text-left leading-tight">
+                  <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
                     {hero.beta.offer}
                   </p>
-                  <p className="mt-0.5 leading-none">
-                    <span className="font-display text-3xl sm:text-4xl font-bold text-foreground">
+                  <p className="mt-1">
+                    <span className="font-display text-2xl sm:text-3xl font-bold text-foreground">
                       {hero.beta.price}
                     </span>
                   </p>
-                  <p className="mt-1 text-sm text-muted-foreground">
-                    {hero.beta.markup}
+                  <p>
+                    <span className="font-display text-base sm:text-lg font-bold text-foreground/85">
+                      {hero.beta.markup}
+                    </span>
                   </p>
-                  <p className="mt-0.5 text-xs text-muted-foreground">
+                  <p className="mt-1 text-[11px] text-muted-foreground">
                     {hero.beta.note}
                   </p>
                 </div>
@@ -82,7 +84,7 @@ export function Hero() {
                     target?.scrollIntoView({ behavior: "smooth", block: "center" });
                     setTimeout(() => input?.focus({ preventScroll: true }), 600);
                   }}
-                  className="inline-flex h-10 shrink-0 items-center justify-center rounded-lg bg-foreground px-5 text-sm font-semibold text-background shadow-[inset_0_-2px_0_0_rgba(0,0,0,0.2)] hover:bg-foreground/85 hover:shadow-none transition-all"
+                  className="inline-flex h-9 shrink-0 items-center justify-center rounded-lg bg-foreground px-4 text-sm font-semibold text-background shadow-[inset_0_-2px_0_0_rgba(0,0,0,0.2)] hover:bg-foreground/85 hover:shadow-none transition-all"
                 >
                   {hero.beta.cta.label}
                 </a>
