@@ -296,14 +296,25 @@ export function SiteHeader() {
         </div>
       </header>
 
-      {/* Beta banner — visually merges out from under the nav pill */}
+      {/* Neck connecting nav pill to beta banner */}
+      <div
+        aria-hidden="true"
+        className={cn(
+          "relative z-0 -mt-px w-10 h-3 bg-popover/50 backdrop-blur-xl",
+          "border-l border-r border-border",
+          "transition-opacity duration-200",
+          openId ? "opacity-0" : "opacity-100",
+        )}
+      />
+
+      {/* Beta banner — sits below the connecting neck */}
       <div
         aria-hidden={openId ? "true" : "false"}
         className={cn(
           "pointer-events-auto relative z-0 bg-popover/50 ring-1 ring-border shadow-md shadow-black/[0.065] backdrop-blur-xl",
-          "rounded-xl -mt-3",
+          "rounded-xl -mt-px",
           "max-w-[calc(100vw-1rem)] md:max-w-[760px]",
-          "px-4 sm:px-6 pt-4 pb-1 sm:pt-5 sm:pb-1.5",
+          "px-4 sm:px-6 py-1.5 sm:py-2",
           "transition-all duration-200 ease-out origin-top",
           openId
             ? "opacity-0 -translate-y-1 scale-[0.98] pointer-events-none"
