@@ -72,7 +72,7 @@ function MarqueeRow({
 
 export function Integrations() {
   return (
-    <section className="max-w-5xl mx-auto pt-12 pb-8">
+    <section className="w-full max-w-5xl mx-auto pt-12 pb-8 px-4 sm:px-6">
       <div className="space-y-6">
         <div>
           <p className="text-[10px] font-mono text-muted-foreground uppercase tracking-[0.2em] mb-3 text-center">
