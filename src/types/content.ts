@@ -31,6 +31,8 @@ export interface FeatureRow {
   description: string;
   detail: string;
   replaces: { name: string; src: string }[];
+  /** Optional pill shown next to the title, e.g. "Coming soon". */
+  badge?: string;
 }
 
 /** Item in the "AI assistant" expanding list. */

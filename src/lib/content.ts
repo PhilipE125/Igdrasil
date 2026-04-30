@@ -16,9 +16,7 @@ import {
   GitBranch,
   Landmark,
   Layers,
-  LayoutDashboard,
   Mail,
-  Plug,
   Receipt,
   Send,
   Sparkles,
@@ -61,7 +59,8 @@ export const siteCopy = {
   },
   product: {
     heading: "What we offer",
-    sub: "Everything a small Swedish company needs to stay compliant — handled by us, automated where it makes sense.",
+    productSub: "Software that automates the books — from receipts and invoices into Fortnox today, to a full Swedish accounting platform tomorrow.",
+    servicesSub: "A hands-on financial partner — bookkeeping, payroll, VAT, and reporting handled by us, on time, every time.",
     replacesLabel: "Includes",
   },
   ai: {
@@ -176,10 +175,10 @@ export const navDropdowns: NavDropdown[] = [
   {
     label: "Product",
     items: [
-      { label: "Dashboard", href: "/#product", description: "Real-time view of your business finances.", Icon: LayoutDashboard },
+      { label: "Automated bookkeeping", href: "/#product", description: "A complete Swedish accounting platform — coming soon.", Icon: Layers },
+      { label: "Receipts & invoices to Fortnox", href: "/#product", description: "Drop a document — we extract, classify, and sync it.", Icon: Receipt },
       { label: "AI Assistant", href: "/#product", description: "Ask anything about your books — answered instantly.", Icon: Sparkles },
-      { label: "Reports & Analytics", href: "/#product", description: "P&L, cash flow, and KPI dashboards on demand.", Icon: BarChart3 },
-      { label: "Integrations", href: "/#product", description: "Connect Fortnox, banks, and your stack.", Icon: Plug },
+      { label: "Reports, Analytics & Integrations", href: "/#product", description: "Live KPIs and connectors — more coming soon.", Icon: BarChart3 },
     ],
   },
   {
@@ -226,10 +225,18 @@ export const ecosystemLogos: InvestorLogo[] = [
 
 export const productFeatureRows: FeatureRow[] = [
   {
-    id: "dashboard",
-    title: "Dashboard",
-    description: "Real-time view of your business finances — books, bank, runway, all in one place.",
-    detail: "Numbers update continuously as transactions land. No spreadsheets to glue, no waiting for month-end.",
+    id: "automated-bookkeeping",
+    title: "Automated bookkeeping",
+    description: "A complete Swedish accounting platform — ledger, filings, and dashboards — powered by AI from day one.",
+    detail: "Double-entry ledger, BAS chart of accounts, VAT, payroll, and year-end closing built natively, not bolted on.",
+    replaces: [],
+    badge: "Coming soon",
+  },
+  {
+    id: "receipts-to-fortnox",
+    title: "Receipts & invoices → Fortnox",
+    description: "Drop any receipt or invoice — we extract, classify, and push it straight to Fortnox.",
+    detail: "Supplier, amounts, VAT, dates, and BAS account mapped automatically. Two-way Fortnox sync with attachments included.",
     replaces: [],
   },
   {
@@ -240,18 +247,12 @@ export const productFeatureRows: FeatureRow[] = [
     replaces: [],
   },
   {
-    id: "reports-analytics",
-    title: "Reports & Analytics",
-    description: "P&L, cash flow, and KPI dashboards on demand — built for founders, not accountants.",
-    detail: "Drill into any number with one click. Export to PDF or share a live link with your board.",
+    id: "reports-analytics-integrations",
+    title: "Reports, Analytics & Integrations",
+    description: "P&L, cash flow, KPI dashboards, and connectors to the tools you already use.",
+    detail: "Live dashboards built for founders, plus a growing roster of bank, billing, and ERP integrations.",
     replaces: [],
-  },
-  {
-    id: "integrations",
-    title: "Integrations",
-    description: "Plug in Fortnox, your bank, and the tools you already use — we handle the data flow.",
-    detail: "One-click connections to the Swedish accounting stack and the apps you run your business on.",
-    replaces: [],
+    badge: "More coming soon",
   },
 ];
 
@@ -261,19 +262,14 @@ export const serviceFeatureRows: FeatureRow[] = [
     title: "Bookkeeping",
     description: "Day-to-day bookkeeping handled by us — reconciled, categorized, and audit-ready in line with Bokföringslagen.",
     detail: "Receipts, invoices, and bank transactions reconciled monthly. Closing entries and year-end prep included.",
-    replaces: [
-      { name: "Fortnox", src: "/images/brand/gmail.png" },
-      { name: "Visma", src: "/images/brand/superhuman-com-dark.png" },
-    ],
+    replaces: [],
   },
   {
     id: "payroll",
     title: "Payroll",
     description: "Salaries, taxes, pension, and Skatteverket filings — handled monthly, on time, every time.",
     detail: "AGI submissions, payslip generation, and employer contributions managed end-to-end.",
-    replaces: [
-      { name: "Skatteverket", src: "/images/brand/hubspot-com-dark.png" },
-    ],
+    replaces: [],
   },
   {
     id: "vat",
@@ -584,10 +580,10 @@ export const footerColumns: FooterColumn[] = [
   {
     heading: "Product",
     links: [
-      { label: "Dashboard", href: "/#product" },
+      { label: "Automated bookkeeping", href: "/#product" },
+      { label: "Receipts & invoices → Fortnox", href: "/#product" },
       { label: "AI Assistant", href: "/#product" },
-      { label: "Reports & Analytics", href: "/#product" },
-      { label: "Integrations", href: "/#product" },
+      { label: "Reports, Analytics & Integrations", href: "/#product" },
     ],
   },
   {
@@ -855,8 +851,11 @@ export const founderNote = {
     "We're a small, driven team building Igdrasil. Working with leading accounting platforms, we go further by automating and integrating our own workflows to streamline bookkeeping, payroll, VAT, employer reporting, and recurring reports.",
     "We're not a traditional firm. We work closely with our clients, stay accessible, and move fast. We're there when needed, growing alongside the companies we support.",
   ],
-  signature: "/images/signature.png",
-  avatar: "/images/brett.jpeg",
+  team: [
+    { name: "Philip", avatar: "/images/team/philip.jpeg" },
+    { name: "Edith", avatar: "/images/team/edith.jpeg" },
+    { name: "Tasmia", avatar: "/images/team/tasmia.jpeg" },
+  ],
   name: "The Igdrasil team",
   title: "Stockholm, Sweden",
   twitter: "",

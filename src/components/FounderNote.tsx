@@ -17,20 +17,18 @@ export function FounderNote() {
         </p>
 
         <div className="mt-12 flex flex-col items-center gap-3">
-          <Image
-            src={founderNote.signature}
-            alt="Brett Goldstein signature"
-            width={160}
-            height={56}
-            className="h-14 w-auto invert opacity-90"
-          />
-          <Image
-            src={founderNote.avatar}
-            alt={founderNote.name}
-            width={64}
-            height={64}
-            className="size-12 rounded-full object-cover"
-          />
+          <div className="flex items-center justify-center gap-3">
+            {founderNote.team.map((member) => (
+              <Image
+                key={member.name}
+                src={member.avatar}
+                alt={member.name}
+                width={64}
+                height={64}
+                className="size-12 rounded-full object-cover"
+              />
+            ))}
+          </div>
           <div className="text-sm font-semibold text-foreground">{founderNote.name}</div>
           <div className="text-xs text-muted-foreground">{founderNote.title}</div>
           <div className="mt-2 flex items-center gap-2">

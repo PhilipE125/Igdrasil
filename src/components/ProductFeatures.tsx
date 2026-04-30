@@ -16,13 +16,13 @@ export function ProductFeatures() {
   const [tab, setTab] = useState<Tab>("product");
   const rows = tab === "product" ? productFeatureRows : serviceFeatureRows;
   const [openId, setOpenId] = useState<string>(rows[0].id);
-  const { heading, sub, replacesLabel } = siteCopy.product;
+  const { heading, productSub, servicesSub, replacesLabel } = siteCopy.product;
+  const sub = tab === "product" ? productSub : servicesSub;
 
   const switchTab = (next: Tab) => {
     if (next === tab) return;
-    const nextRows = next === "product" ? productFeatureRows : serviceFeatureRows;
     setTab(next);
-    setOpenId(nextRows[0].id);
+    setOpenId("");
   };
 
   return (
@@ -91,7 +91,7 @@ export function ProductFeatures() {
                   </span>
                   <ChevronDownIcon
                     className={cn(
-                      "size-5 text-muted-foreground transition-transform",
+                      "size-5 shrink-0 text-muted-foreground transition-transform",
                       open && "rotate-180",
                     )}
                   />
@@ -103,6 +103,11 @@ export function ProductFeatures() {
                   )}
                 >
                   <div className="overflow-hidden">
+                    {row.badge && (
+                      <span className="mb-3 inline-flex items-center rounded-full border border-border bg-foreground/[0.04] px-2.5 py-0.5 text-[11px] font-medium uppercase tracking-wider text-muted-foreground whitespace-nowrap">
+                        {row.badge}
+                      </span>
+                    )}
                     <p className="text-base md:text-lg text-foreground/85">
                       {row.description}
                     </p>

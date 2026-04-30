@@ -38,7 +38,7 @@ export function Hero() {
           fill
           priority
           sizes="100vw"
-          className="size-full object-contain object-top rotate-[0.5deg]"
+          className="size-full object-contain object-top scale-[1.13] rotate-[0.5deg]"
         />
         <div
           className="absolute inset-0"
@@ -53,15 +53,8 @@ export function Hero() {
         <div className="mx-auto max-w-6xl px-6 text-center lg:px-12">
           <button
             type="button"
-            className="mb-5 inline-flex h-7 items-center gap-1.5 rounded-[8px] border border-input bg-layer-3 pr-2 pl-1 text-sm font-semibold text-foreground transition-all btn-hover-overlay"
+            className="mb-5 inline-flex h-7 items-center rounded-[8px] border border-input bg-layer-3 px-3 text-sm font-semibold text-foreground transition-all btn-hover-overlay"
           >
-            <Image
-              src={hero.launchVideoThumb}
-              alt="Launch video"
-              width={32}
-              height={18}
-              className="h-5 w-8 rounded-[5px] object-cover"
-            />
             {hero.launchVideoLabel}
           </button>
 

@@ -71,7 +71,7 @@ export function SiteHeader() {
       <Link
         aria-label="home"
         href="/"
-        className="fixed top-4 left-4 md:top-6 md:left-8 z-50 flex items-center gap-3 text-black hover:opacity-80 transition-opacity"
+        className="fixed top-4 left-4 md:top-6 md:left-8 z-50 flex items-center gap-3 text-foreground hover:opacity-80 transition-opacity"
       >
         <Image src="/logo.svg" alt="" width={56} height={56} className="size-12 md:size-14" />
         <span className="font-display text-3xl md:text-4xl font-semibold tracking-wider">Igdrasil</span>
