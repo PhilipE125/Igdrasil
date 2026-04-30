@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { DemoApp } from "@/components/DemoApp";
 import { siteCopy } from "@/lib/content";
 
 export function Hero() {
@@ -20,10 +19,10 @@ export function Hero() {
     }, 1200);
   };
   return (
-    <section className="bg-background relative">
+    <section className="bg-background relative min-h-[640px] md:min-h-[920px] lg:min-h-[1180px]">
       <div
         aria-hidden="true"
-        className="dither-xl pointer-events-none absolute inset-x-0 top-0 h-[640px] sm:bottom-0 sm:h-auto opacity-[0.25]"
+        className="dither-xl pointer-events-none absolute inset-0 opacity-[0.25]"
         style={{
           maskImage:
             "radial-gradient(48% 25% at 50% 56%, black 0%, transparent 100%)",
@@ -31,14 +30,14 @@ export function Hero() {
             "radial-gradient(48% 25% at 50% 56%, black 0%, transparent 100%)",
         }}
       />
-      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-[640px] sm:bottom-0 sm:h-auto overflow-hidden z-0">
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden z-0">
         <Image
           src={hero.backgroundImage}
           alt=""
           fill
           priority
           sizes="100vw"
-          className="size-full object-contain object-top scale-[1.5] sm:scale-[1.13] rotate-[0.5deg]"
+          className="size-full object-contain object-top scale-[1.13] rotate-[0.5deg]"
         />
         <div
           className="absolute inset-0"
@@ -49,7 +48,7 @@ export function Hero() {
         />
       </div>
 
-      <div className="relative z-10 pt-24 md:pt-32 lg:pt-40 pb-6 md:pb-20">
+      <div className="relative z-10 pt-24 md:pt-32 lg:pt-40 pb-20">
         <div className="mx-auto max-w-6xl px-6 text-center lg:px-12">
           <button
             type="button"
@@ -104,8 +103,6 @@ export function Hero() {
           </div>
         </div>
       </div>
-
-      <DemoApp />
     </section>
   );
 }
