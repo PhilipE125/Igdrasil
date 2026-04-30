@@ -75,7 +75,7 @@ export function SiteHeader() {
         <ThemeToggle />
       </div>
 
-    <div ref={headerRef} className="fixed inset-x-0 top-3 z-50 flex flex-col items-center gap-1 px-4 pointer-events-none">
+    <div ref={headerRef} className="fixed inset-x-0 top-3 z-50 flex flex-col items-center px-4 pointer-events-none">
       <header
         role="banner"
         data-state={openId ? "active" : "inactive"}
@@ -296,38 +296,35 @@ export function SiteHeader() {
         </div>
       </header>
 
-      {/* Beta banner — sits flush under the nav pill, slightly wider, same style */}
+      {/* Beta banner — visually merges out from under the nav pill */}
       <div
+        aria-hidden={openId ? "true" : "false"}
         className={cn(
-          "pointer-events-auto relative bg-popover/50 ring-1 ring-border shadow-md shadow-black/[0.065] rounded-xl backdrop-blur-xl",
+          "pointer-events-auto relative bg-popover/50 ring-1 ring-border shadow-md shadow-black/[0.065] backdrop-blur-xl",
+          "rounded-b-xl rounded-t-none border-t-0 -mt-px",
           "max-w-[calc(100vw-2rem)] md:max-w-[640px]",
-          "pl-3 pr-1.5 sm:pl-4 sm:pr-2 py-1 sm:py-1.5",
+          "px-4 sm:px-6 py-1.5 sm:py-2",
+          "transition-all duration-200 ease-out origin-top",
+          openId
+            ? "opacity-0 -translate-y-1 scale-[0.98] pointer-events-none"
+            : "opacity-100 translate-y-0 scale-100",
         )}
       >
-        <div className="flex items-center justify-between gap-2 sm:gap-3">
-          <div className="flex flex-col leading-tight min-w-0">
-            <p className="text-[9px] sm:text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
-              {siteCopy.hero.beta.offer}
-            </p>
-            <p className="mt-0.5 flex items-baseline gap-1.5 sm:gap-2 flex-wrap">
-              <span className="font-display text-sm sm:text-base font-bold text-foreground whitespace-nowrap">
-                {siteCopy.hero.beta.price}
-              </span>
-              <span className="font-display text-[10px] sm:text-xs font-bold text-foreground/85">
-                {siteCopy.hero.beta.markup}
-              </span>
-            </p>
-            <p className="text-[8px] sm:text-[9px] text-muted-foreground">
-              {siteCopy.hero.beta.note}
-            </p>
-          </div>
-          <a
-            href={siteCopy.hero.beta.cta.href}
-            onClick={focusWaitlist}
-            className="inline-flex h-7 shrink-0 items-center justify-center rounded-md bg-foreground px-2.5 sm:px-3 text-[10px] sm:text-xs font-semibold text-background shadow-[inset_0_-2px_0_0_rgba(0,0,0,0.2)] hover:bg-foreground/85 hover:shadow-none transition-all"
-          >
-            {siteCopy.hero.beta.cta.label}
-          </a>
+        <div className="flex flex-col items-center text-center leading-tight">
+          <p className="text-[9px] sm:text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+            {siteCopy.hero.beta.offer}
+          </p>
+          <p className="mt-0.5 flex items-baseline gap-1.5 sm:gap-2 flex-wrap justify-center">
+            <span className="font-display text-sm sm:text-base font-bold text-foreground whitespace-nowrap">
+              {siteCopy.hero.beta.price}
+            </span>
+            <span className="font-display text-[10px] sm:text-xs font-bold text-foreground/85">
+              {siteCopy.hero.beta.markup}
+            </span>
+          </p>
+          <p className="text-[8px] sm:text-[9px] text-muted-foreground">
+            {siteCopy.hero.beta.note}
+          </p>
         </div>
       </div>
     </div>
