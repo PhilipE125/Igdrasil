@@ -16,6 +16,15 @@ const OUTPUT_PRICE_PER_M_USD = 1.5;
 const MARKUP = 1.1;
 const USD_TO_SEK = 10.5;
 
+// Barbell silhouette: top pill (576 wide x 44 tall, centered), narrow waist
+// (32 wide), bottom banner (760 wide x 60 tall). Concave fillets (R=8) at the
+// pill→waist→banner transitions; rounded outer corners (R=12).
+const BARBELL_PATH =
+  "M 104 0 L 656 0 A 12 12 0 0 1 668 12 L 668 32 A 12 12 0 0 1 656 44 L 404 44 A 8 8 0 0 0 404 60 L 748 60 A 12 12 0 0 1 760 72 L 760 108 A 12 12 0 0 1 748 120 L 12 120 A 12 12 0 0 1 0 108 L 0 72 A 12 12 0 0 1 12 60 L 356 60 A 8 8 0 0 0 356 44 L 104 44 A 12 12 0 0 1 92 32 L 92 12 A 12 12 0 0 1 104 0 Z";
+const BARBELL_MASK_URL = `url("data:image/svg+xml;utf8,${encodeURIComponent(
+  `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 760 120' preserveAspectRatio='none'><path d='${BARBELL_PATH}' fill='black'/></svg>`,
+)}")`;
+
 // 50/50 split between input and output tokens, raw cost (no markup)
 const RAW_TOKEN_SEK_PER_INVOICE =
   ((TOKENS_PER_INVOICE / 2 / 1_000_000) * INPUT_PRICE_PER_M_USD +
@@ -75,16 +84,39 @@ export function SiteHeader() {
         <ThemeToggle />
       </div>
 
-    <div ref={headerRef} className="fixed inset-x-0 top-3 z-50 flex flex-col items-center px-4 pointer-events-none">
+    <div ref={headerRef} className="fixed inset-x-0 top-3 z-50 flex justify-center px-4 pointer-events-none">
+      <div
+        className="relative pointer-events-none"
+        style={{
+          width: "min(760px, calc(100vw - 1rem))",
+          height: 120,
+        }}
+      >
+        {/* Visual barbell silhouette — single masked layer providing the
+            connected pill+waist+banner shape with concave fillets. */}
+        <div
+          aria-hidden="true"
+          className={cn(
+            "absolute inset-0 bg-popover/70 backdrop-blur-xl",
+            "transition-opacity duration-200",
+          )}
+          style={{
+            maskImage: BARBELL_MASK_URL,
+            WebkitMaskImage: BARBELL_MASK_URL,
+            maskSize: "100% 100%",
+            WebkitMaskSize: "100% 100%",
+            maskRepeat: "no-repeat",
+            WebkitMaskRepeat: "no-repeat",
+            filter: "drop-shadow(0 1px 2px rgba(0,0,0,0.08))",
+          }}
+        />
+
       <header
         role="banner"
         data-state={openId ? "active" : "inactive"}
         className={cn(
-          "pointer-events-auto relative z-10 bg-popover/70 shadow-md shadow-black/[0.08] rounded-xl backdrop-blur-xl",
-          "transition-[max-width,padding] duration-300 ease-out",
-          openId
-            ? "max-w-[calc(100vw-7rem)] md:max-w-[640px] py-1.5 px-1.5"
-            : "max-w-[calc(100vw-7rem)] md:max-w-xl py-1.5 pl-1.5 pr-1.5",
+          "absolute top-0 left-1/2 -translate-x-1/2 pointer-events-auto h-11",
+          "w-[calc(100vw-7rem)] md:w-[75.8%] md:max-w-[576px] py-1.5 pl-1.5 pr-1.5",
         )}
       >
         <div className="flex items-center gap-0.5 lg:gap-1">
@@ -296,28 +328,14 @@ export function SiteHeader() {
         </div>
       </header>
 
-      {/* Neck connecting nav pill to beta banner */}
-      <div
-        aria-hidden="true"
-        className={cn(
-          "relative z-20 -mt-2 -mb-2 w-12 h-5 bg-popover/70 backdrop-blur-xl rounded-sm",
-          "transition-opacity duration-200",
-          openId ? "opacity-0" : "opacity-100",
-        )}
-      />
-
-      {/* Beta banner — sits below the connecting neck */}
+      {/* Beta banner — bottom region of the barbell */}
       <div
         aria-hidden={openId ? "true" : "false"}
         className={cn(
-          "pointer-events-auto relative z-0 bg-popover/70 shadow-md shadow-black/[0.08] backdrop-blur-xl",
-          "rounded-xl",
-          "max-w-[calc(100vw-1rem)] md:max-w-[760px]",
-          "px-4 sm:px-6 py-1.5 sm:py-2",
-          "transition-all duration-200 ease-out origin-top",
-          openId
-            ? "opacity-0 -translate-y-1 scale-[0.98] pointer-events-none"
-            : "opacity-100 translate-y-0 scale-100",
+          "absolute bottom-0 inset-x-0 h-[60px] pointer-events-auto",
+          "flex items-center justify-center px-6 sm:px-10",
+          "transition-opacity duration-200",
+          openId ? "opacity-0 pointer-events-none" : "opacity-100",
         )}
       >
         <div className="flex flex-wrap items-baseline justify-center gap-x-2 sm:gap-x-3 gap-y-0 leading-tight">
@@ -334,6 +352,7 @@ export function SiteHeader() {
             {siteCopy.hero.beta.note}
           </span>
         </div>
+      </div>
       </div>
     </div>
     </>
