@@ -15,7 +15,7 @@ type Tab = "product" | "services";
 export function ProductFeatures() {
   const [tab, setTab] = useState<Tab>("product");
   const rows = tab === "product" ? productFeatureRows : serviceFeatureRows;
-  const [openId, setOpenId] = useState<string>(rows[0].id);
+  const [openId, setOpenId] = useState<string>("");
   const { heading, productSub, servicesSub, replacesLabel } = siteCopy.product;
   const sub = tab === "product" ? productSub : servicesSub;
 
