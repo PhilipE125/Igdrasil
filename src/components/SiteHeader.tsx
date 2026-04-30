@@ -80,7 +80,7 @@ export function SiteHeader() {
         role="banner"
         data-state={openId ? "active" : "inactive"}
         className={cn(
-          "pointer-events-auto relative bg-popover/50 ring-1 ring-border shadow-md shadow-black/[0.065] rounded-xl backdrop-blur-xl",
+          "pointer-events-auto relative z-10 bg-popover/50 ring-1 ring-border shadow-md shadow-black/[0.065] rounded-xl backdrop-blur-xl",
           "transition-[max-width,padding] duration-300 ease-out",
           openId
             ? "max-w-[calc(100vw-7rem)] md:max-w-[640px] py-1.5 px-1.5"
@@ -300,10 +300,10 @@ export function SiteHeader() {
       <div
         aria-hidden={openId ? "true" : "false"}
         className={cn(
-          "pointer-events-auto relative bg-popover/50 ring-1 ring-border shadow-md shadow-black/[0.065] backdrop-blur-xl",
-          "rounded-xl -mt-px",
+          "pointer-events-auto relative z-0 bg-popover/50 ring-1 ring-border shadow-md shadow-black/[0.065] backdrop-blur-xl",
+          "rounded-xl -mt-3",
           "max-w-[calc(100vw-1rem)] md:max-w-[760px]",
-          "px-4 sm:px-6 py-1 sm:py-1.5",
+          "px-4 sm:px-6 pt-4 pb-1 sm:pt-5 sm:pb-1.5",
           "transition-all duration-200 ease-out origin-top",
           openId
             ? "opacity-0 -translate-y-1 scale-[0.98] pointer-events-none"
