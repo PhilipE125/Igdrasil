@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { DemoApp } from "@/components/DemoApp";
 import { siteCopy } from "@/lib/content";
 
 export function Hero() {
@@ -103,6 +104,8 @@ export function Hero() {
           </div>
         </div>
       </div>
+
+      <DemoApp />
     </section>
   );
 }

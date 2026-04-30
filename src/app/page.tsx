@@ -4,7 +4,6 @@ import { AiAssistant } from "@/components/AiAssistant";
 import { AutomationSkills } from "@/components/AutomationSkills";
 import { BuiltToScale } from "@/components/BuiltToScale";
 import { ContextGraph } from "@/components/ContextGraph";
-import { DemoApp } from "@/components/DemoApp";
 import { FinalCTA } from "@/components/FinalCTA";
 import { FounderNote } from "@/components/FounderNote";
 import { Hero } from "@/components/Hero";
@@ -21,7 +20,6 @@ export default function Home() {
       <SiteHeader />
       <main>
         <Hero />
-        <DemoApp />
         <InvestorMarquee />
         <ProductFeatures />
         <AiAssistant />
