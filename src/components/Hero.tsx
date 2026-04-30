@@ -63,12 +63,10 @@ export function Hero() {
                       {hero.beta.price}
                     </span>
                   </p>
-                </div>
-                <div className="text-center sm:text-left">
-                  <p className="text-sm text-muted-foreground">
+                  <p className="mt-1 text-sm text-muted-foreground">
                     {hero.beta.markup}
                   </p>
-                  <p className="text-xs text-muted-foreground">
+                  <p className="mt-0.5 text-xs text-muted-foreground">
                     {hero.beta.note}
                   </p>
                 </div>
