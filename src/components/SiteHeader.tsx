@@ -3,11 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import {
-  ChevronDownIcon,
-  CloseIcon,
-  MenuIcon,
-} from "@/components/icons";
+import { ChevronDownIcon } from "@/components/icons";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { navDropdowns, navLinks, siteCopy } from "@/lib/content";
 import { cn } from "@/lib/utils";
@@ -28,7 +24,6 @@ const RAW_TOKEN_SEK_PER_INVOICE =
 
 export function SiteHeader() {
   const [openId, setOpenId] = useState<string | null>(null);
-  const [menuOpen, setMenuOpen] = useState(false);
   const [invoiceCount, setInvoiceCount] = useState(100);
   const headerRef = useRef<HTMLDivElement>(null);
 
@@ -40,7 +35,6 @@ export function SiteHeader() {
     if (siteCopy.authBar.signUp.href !== "#waitlist") return;
     e.preventDefault();
     setOpenId(null);
-    setMenuOpen(false);
     const target = document.getElementById("waitlist");
     const input = document.getElementById("waitlist-email") as HTMLInputElement | null;
     target?.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -71,30 +65,30 @@ export function SiteHeader() {
       <Link
         aria-label="home"
         href="/"
-        className="fixed top-4 left-4 md:top-6 md:left-8 z-50 flex items-center gap-3 text-foreground hover:opacity-80 transition-opacity"
+        className="fixed top-3 left-3 md:top-6 md:left-8 z-50 flex items-center gap-2 md:gap-3 text-foreground hover:opacity-80 transition-opacity"
       >
-        <Image src="/logo.svg" alt="" width={56} height={56} className="size-12 md:size-14" />
-        <span className="font-display text-3xl md:text-4xl font-semibold tracking-wider">Igdrasil</span>
+        <Image src="/logo.svg" alt="" width={56} height={56} className="size-9 md:size-14" />
+        <span className="hidden md:inline font-display text-3xl md:text-4xl font-semibold tracking-wider">Igdrasil</span>
       </Link>
 
-      <div className="fixed top-4 right-4 md:top-6 md:right-8 z-50">
+      <div className="fixed top-3 right-3 md:top-6 md:right-8 z-50">
         <ThemeToggle />
       </div>
 
     <div ref={headerRef} className="fixed inset-x-0 top-3 z-50 flex justify-center px-4 pointer-events-none">
       <header
         role="banner"
-        data-state={openId || menuOpen ? "active" : "inactive"}
+        data-state={openId ? "active" : "inactive"}
         className={cn(
           "pointer-events-auto relative bg-popover/50 ring-1 ring-border shadow-md shadow-black/[0.065] rounded-xl backdrop-blur-xl",
           "transition-[max-width,padding] duration-300 ease-out",
-          openId ? "max-w-[640px] py-1.5 px-1.5" : "max-w-xl py-1.5 pl-1.5 pr-1.5",
-          menuOpen && "max-lg:max-w-[calc(100vw-2rem)]",
+          openId
+            ? "max-w-[calc(100vw-7rem)] md:max-w-[640px] py-1.5 px-1.5"
+            : "max-w-[calc(100vw-7rem)] md:max-w-xl py-1.5 pl-1.5 pr-1.5",
         )}
       >
-        <div className="flex items-center gap-1">
-          {/* Desktop nav */}
-          <nav aria-label="Main" className="hidden lg:flex items-center gap-0.5">
+        <div className="flex items-center gap-0.5 lg:gap-1">
+          <nav aria-label="Main" className="flex items-center gap-0.5">
             {navDropdowns.map((d) => {
               const isOpen = openId === d.label;
               return (
@@ -107,7 +101,7 @@ export function SiteHeader() {
                       setOpenId((cur) => (cur === d.label ? null : d.label))
                     }
                     className={cn(
-                      "group inline-flex h-8 items-center gap-1.5 rounded-md px-3 text-sm font-medium transition-colors",
+                      "group inline-flex h-7 lg:h-8 items-center gap-1 lg:gap-1.5 rounded-md px-2 lg:px-3 text-[12px] lg:text-sm font-medium transition-colors",
                       isOpen
                         ? "bg-foreground/5 text-foreground"
                         : "text-foreground/75 hover:bg-foreground/5 hover:text-foreground",
@@ -128,40 +122,32 @@ export function SiteHeader() {
               <Link
                 key={l.label}
                 href={l.href}
-                className="inline-flex h-8 items-center rounded-md px-3 text-sm font-medium text-foreground/75 hover:bg-foreground/5 hover:text-foreground transition-colors"
+                className="hidden md:inline-flex h-8 items-center rounded-md px-3 text-sm font-medium text-foreground/75 hover:bg-foreground/5 hover:text-foreground transition-colors"
               >
                 {l.label}
               </Link>
             ))}
           </nav>
 
-          {/* Right actions */}
           <div className="ml-auto flex items-center gap-1">
             <Link
               href={siteCopy.authBar.signUp.href}
               onClick={focusWaitlist}
-              className="hidden lg:inline-flex h-8 items-center rounded-md bg-foreground px-3 text-xs font-semibold text-background shadow-[inset_0_-2px_0_0_rgba(0,0,0,0.2)] hover:bg-foreground/85 hover:shadow-none transition-all"
+              className="inline-flex h-7 lg:h-8 items-center rounded-md bg-foreground px-2 lg:px-3 text-[11px] lg:text-xs font-semibold text-background shadow-[inset_0_-2px_0_0_rgba(0,0,0,0.2)] hover:bg-foreground/85 hover:shadow-none transition-all"
             >
               {siteCopy.authBar.signUp.label}
             </Link>
-
-            {/* Mobile toggle */}
-            <button
-              type="button"
-              aria-label={menuOpen ? "Close menu" : "Open menu"}
-              onClick={() => setMenuOpen((v) => !v)}
-              className="lg:hidden h-8 w-8 grid place-items-center text-foreground rounded-md hover:bg-foreground/5 transition-colors"
-            >
-              {menuOpen ? <CloseIcon className="size-4" /> : <MenuIcon className="size-4" />}
-            </button>
           </div>
         </div>
 
-        {/* Dropdown viewport (desktop) */}
+        {/* Dropdown viewport */}
         <div
           className={cn(
-            "hidden lg:grid absolute left-1/2 top-[calc(100%+8px)] -translate-x-1/2",
-            openId === "Product" || openId === "Services" ? "w-[680px]" : "w-[600px]",
+            "grid absolute left-1/2 top-[calc(100%+8px)] -translate-x-1/2",
+            "w-[calc(100vw-1.5rem)]",
+            openId === "Product" || openId === "Services"
+              ? "lg:w-[680px]"
+              : "lg:w-[600px]",
             "transition-all duration-200 ease-out origin-top",
             openId
               ? "opacity-100 translate-y-0 scale-100 pointer-events-auto"
@@ -209,9 +195,9 @@ export function SiteHeader() {
 
               if (d.label === "Product") {
                 return (
-                  <div key={d.label} className="grid grid-cols-[1fr_260px] gap-2">
+                  <div key={d.label} className="grid grid-cols-1 lg:grid-cols-[1fr_260px] gap-2">
                     {itemList}
-                    <div className="border-l border-border pl-4 pr-3 py-3 text-left">
+                    <div className="border-t lg:border-t-0 lg:border-l border-border pt-3 lg:pt-3 lg:pl-4 lg:pr-3 lg:py-3 px-3 pb-3 text-left">
                       <p className="leading-tight">
                         <span className="text-3xl font-bold text-foreground">25 SEK</span>
                         <span className="ml-1.5 text-xs text-muted-foreground">/ month</span>
@@ -284,9 +270,9 @@ export function SiteHeader() {
               }
               if (d.label === "Services") {
                 return (
-                  <div key={d.label} className="grid grid-cols-[1fr_260px] gap-2">
+                  <div key={d.label} className="grid grid-cols-1 lg:grid-cols-[1fr_260px] gap-2">
                     {itemList}
-                    <div className="border-l border-border pl-4 pr-3 py-3 text-left">
+                    <div className="border-t lg:border-t-0 lg:border-l border-border pt-3 lg:pt-3 lg:pl-4 lg:pr-3 lg:py-3 px-3 pb-3 text-left">
                       <p className="leading-tight">
                         <span className="text-3xl font-bold text-foreground">Hourly</span>
                         <span className="ml-1.5 text-xs text-muted-foreground">billing rate</span>
@@ -308,60 +294,6 @@ export function SiteHeader() {
             })}
           </div>
         </div>
-
-        {/* Mobile sheet — expanded below the bubble when menuOpen */}
-        {menuOpen && (
-          <div className="lg:hidden mt-2 pt-3 border-t border-border">
-            <div className="flex flex-col gap-1">
-              {navDropdowns.map((d) => (
-                <details key={d.label} className="group">
-                  <summary className="flex h-9 items-center justify-between rounded-md px-3 text-sm font-medium text-foreground/85 list-none cursor-pointer hover:bg-foreground/5">
-                    {d.label}
-                    <ChevronDownIcon className="size-3 opacity-75 transition-transform group-open:rotate-180" />
-                  </summary>
-                  <ul className="mt-1 mb-2 ml-2 flex flex-col gap-0.5">
-                    {d.items.map((item) => (
-                      <li key={item.label}>
-                        <Link
-                          href={item.href}
-                          onClick={() => setMenuOpen(false)}
-                          className="block rounded-md px-3 py-2 text-sm text-foreground/85 hover:bg-foreground/5 hover:text-foreground"
-                        >
-                          {item.label}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </details>
-              ))}
-              {navLinks.map((l) => (
-                <Link
-                  key={l.label}
-                  href={l.href}
-                  onClick={() => setMenuOpen(false)}
-                  className="h-9 flex items-center rounded-md px-3 text-sm font-medium text-foreground/85 hover:bg-foreground/5 hover:text-foreground"
-                >
-                  {l.label}
-                </Link>
-              ))}
-              <div className="mt-3 flex flex-col gap-2">
-                <Link
-                  href={siteCopy.authBar.signUp.href}
-                  onClick={focusWaitlist}
-                  className="h-9 inline-flex items-center justify-center rounded-md bg-foreground px-4 text-sm font-semibold text-background"
-                >
-                  {siteCopy.authBar.signUp.label}
-                </Link>
-                <Link
-                  href={siteCopy.authBar.logIn.href}
-                  className="h-9 inline-flex items-center justify-center rounded-md border border-border text-sm font-semibold text-foreground"
-                >
-                  {siteCopy.authBar.logIn.label}
-                </Link>
-              </div>
-            </div>
-          </div>
-        )}
       </header>
     </div>
     </>
