@@ -300,7 +300,7 @@ export function SiteHeader() {
       <div
         aria-hidden="true"
         className={cn(
-          "relative z-0 -mt-px w-10 h-3 bg-popover/50 backdrop-blur-xl",
+          "relative z-20 -mt-1 -mb-1 w-10 h-4 bg-popover/70 backdrop-blur-xl",
           "border-l border-r border-border",
           "transition-opacity duration-200",
           openId ? "opacity-0" : "opacity-100",
@@ -312,7 +312,7 @@ export function SiteHeader() {
         aria-hidden={openId ? "true" : "false"}
         className={cn(
           "pointer-events-auto relative z-0 bg-popover/50 ring-1 ring-border shadow-md shadow-black/[0.065] backdrop-blur-xl",
-          "rounded-xl -mt-px",
+          "rounded-xl",
           "max-w-[calc(100vw-1rem)] md:max-w-[760px]",
           "px-4 sm:px-6 py-1.5 sm:py-2",
           "transition-all duration-200 ease-out origin-top",
