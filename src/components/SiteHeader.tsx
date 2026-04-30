@@ -302,29 +302,27 @@ export function SiteHeader() {
         className={cn(
           "pointer-events-auto relative bg-popover/50 ring-1 ring-border shadow-md shadow-black/[0.065] backdrop-blur-xl",
           "rounded-b-xl rounded-t-none border-t-0 -mt-px",
-          "max-w-[calc(100vw-2rem)] md:max-w-[640px]",
-          "px-4 sm:px-6 py-1.5 sm:py-2",
+          "max-w-[calc(100vw-1rem)] md:max-w-[760px]",
+          "px-4 sm:px-6 py-1 sm:py-1.5",
           "transition-all duration-200 ease-out origin-top",
           openId
             ? "opacity-0 -translate-y-1 scale-[0.98] pointer-events-none"
             : "opacity-100 translate-y-0 scale-100",
         )}
       >
-        <div className="flex flex-col items-center text-center leading-tight">
-          <p className="text-[9px] sm:text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+        <div className="flex flex-wrap items-baseline justify-center gap-x-2 sm:gap-x-3 gap-y-0 leading-tight">
+          <span className="text-[9px] sm:text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
             {siteCopy.hero.beta.offer}
-          </p>
-          <p className="mt-0.5 flex items-baseline gap-1.5 sm:gap-2 flex-wrap justify-center">
-            <span className="font-display text-sm sm:text-base font-bold text-foreground whitespace-nowrap">
-              {siteCopy.hero.beta.price}
-            </span>
-            <span className="font-display text-[10px] sm:text-xs font-bold text-foreground/85">
-              {siteCopy.hero.beta.markup}
-            </span>
-          </p>
-          <p className="text-[8px] sm:text-[9px] text-muted-foreground">
+          </span>
+          <span className="font-display text-sm sm:text-base font-bold text-foreground whitespace-nowrap">
+            {siteCopy.hero.beta.price}
+          </span>
+          <span className="font-display text-[10px] sm:text-xs font-bold text-foreground/85">
+            {siteCopy.hero.beta.markup}
+          </span>
+          <span className="text-[8px] sm:text-[10px] text-muted-foreground">
             {siteCopy.hero.beta.note}
-          </p>
+          </span>
         </div>
       </div>
     </div>
