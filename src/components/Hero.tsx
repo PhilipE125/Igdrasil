@@ -37,7 +37,7 @@ export function Hero() {
           fill
           priority
           sizes="100vw"
-          className="size-full object-contain object-top scale-[1.13] rotate-[0.5deg]"
+          className="size-full object-cover sm:object-contain object-top scale-[1.13] rotate-[0.5deg]"
         />
         <div
           className="absolute inset-0"
