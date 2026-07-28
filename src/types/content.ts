@@ -37,7 +37,8 @@ export interface FeatureRow {
 
 /** Skill card in the "Skills and automations" tabbed grid. */
 export interface SkillCard {
-  emoji: string;
+  emoji?: string;
+  iconSrc?: string;
   title: string;
   description: string;
   href: string;

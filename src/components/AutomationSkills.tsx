@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { automationsTabs, promptCards, siteCopy } from "@/lib/content";
 import { cn } from "@/lib/utils";
@@ -13,7 +14,7 @@ export function AutomationSkills() {
   return (
     <section
       id="automations"
-      className="bg-background flex min-h-dvh flex-col items-center justify-center py-24"
+      className="bg-background flex flex-col items-center justify-center py-16 md:py-20"
     >
       <div className="mx-auto w-full max-w-6xl px-6 lg:px-12">
         <div className="text-center mb-10">
@@ -53,7 +54,19 @@ export function AutomationSkills() {
               href={card.href}
               className="group border border-border bg-card hover:bg-layer-3 transition-colors p-5 rounded-2xl"
             >
-              <div className="text-2xl mb-3" aria-hidden="true">{card.emoji}</div>
+              <div className="mb-3 h-8 flex items-center" aria-hidden="true">
+                {card.iconSrc ? (
+                  <Image
+                    src={card.iconSrc}
+                    alt=""
+                    width={32}
+                    height={32}
+                    className="size-8 object-contain [image-rendering:pixelated]"
+                  />
+                ) : (
+                  <span className="text-2xl leading-none">{card.emoji}</span>
+                )}
+              </div>
               <h3 className="text-base font-semibold text-foreground group-hover:underline">
                 {card.title}
               </h3>

@@ -63,6 +63,10 @@ export function BankMatchCard({ active = true }: { active?: boolean }) {
   }, []);
 
   useEffect(() => {
+    if (active && !reducedMotion) setMatched(0);
+  }, [active, reducedMotion]);
+
+  useEffect(() => {
     if (reducedMotion) {
       setMatched(MATCHES.length);
       return;

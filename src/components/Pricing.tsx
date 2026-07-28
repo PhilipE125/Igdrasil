@@ -5,7 +5,7 @@ import { useState } from "react";
 import { siteCopy } from "@/lib/content";
 import { cn } from "@/lib/utils";
 
-const FLAT_FEE_SEK = 25;
+const FLAT_FEE_SEK = 250;
 const TOKENS_PER_INVOICE = 10_000;
 const INPUT_PRICE_PER_M_USD = 0.25;
 const OUTPUT_PRICE_PER_M_USD = 1.5;
@@ -28,7 +28,7 @@ export function Pricing() {
   return (
     <section
       id="pricing"
-      className="bg-background @container flex min-h-dvh items-center py-24 scroll-mt-24"
+      className="bg-background @container flex items-center py-16 md:py-20 scroll-mt-24"
     >
       <div className="mx-auto w-full max-w-6xl px-6 lg:px-12">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
@@ -47,7 +47,7 @@ export function Pricing() {
             <div className="mt-8 flex flex-wrap items-baseline gap-x-8 gap-y-3">
               <p className="leading-none">
                 <span className="text-5xl font-black text-foreground tabular-nums">
-                  25 SEK
+                  250 SEK
                 </span>
                 <span className="ml-2 text-sm text-muted-foreground">
                   {pricing.flatFeeLabel}

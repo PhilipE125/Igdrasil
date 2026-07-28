@@ -16,7 +16,7 @@ export function Roadmap() {
   const c = siteCopy.roadmap;
 
   return (
-    <section className="relative py-20 md:py-24 overflow-hidden">
+    <section className="relative py-14 md:py-16 overflow-hidden">
       <div className="absolute inset-0 -z-10">
         <Image
           src={c.backgroundImage}

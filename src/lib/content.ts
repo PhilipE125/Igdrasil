@@ -45,16 +45,22 @@ export const siteCopy = {
     launchVideoThumb: "/images/video-thumb-brett.png",
     heading: "Accounting that scales with you",
     sub: "Automated accounting software for bookkeeping, payroll, VAT, and reporting. Pricing that doesn't run away as you scale.",
-    primaryCta: { label: "Get notified", href: "#waitlist" },
+    primaryCta: {
+      label: "Get started",
+      armedLabel: "Go to Igdrasil onboarding →",
+      caption: "accounting.igdrasil.se",
+      href: "https://accounting.igdrasil.se",
+    },
     secondaryCta: { label: "Talk to us" },
     backgroundImage: "/images/igdrasil-meadow.webp",
+    topBanner: { label: "Get started", href: "https://accounting.igdrasil.se" },
     beta: {
       eyebrow: "Beta launching soon",
       offer: "First 100 users",
-      price: "25 SEK / month",
+      price: "250 SEK / month",
       markup: "+ 10% markup on token consumption",
       note: "No add-on fees, ever.",
-      cta: { label: "Join the beta", href: "#waitlist" },
+      cta: { label: "Join the beta", href: "https://accounting.igdrasil.se" },
     },
   },
   product: {
@@ -64,7 +70,7 @@ export const siteCopy = {
     replacesLabel: "Includes",
   },
   ai: {
-    heading: "Your books, in conversation",
+    heading: "Your books, handled by agents",
     sub: "Ask Igdrasil anything about your finances. Our assistant learns your business and turns numbers into plain answers — no spreadsheets, no jargon.",
   },
   automations: {
@@ -128,7 +134,7 @@ export const siteCopy = {
       total: "Estimated total",
     },
     note: "No hidden fees. No per-seat pricing. No surprise invoices at year-end.",
-    cta: { label: "Get notified at launch", href: "#waitlist" },
+    cta: { label: "Get started", href: "https://accounting.igdrasil.se" },
   },
   roadmap: {
     eyebrow: "Roadmap",
@@ -139,9 +145,14 @@ export const siteCopy = {
     backgroundImage: "/images/micro-night-bg.png",
   },
   finalCta: {
-    heading: "Beta launching soon",
+    heading: "Join Beta",
     grassImage: "/images/igdrasil-meadow.webp",
-    primaryCta: { label: "Get notified", href: "#waitlist" },
+    primaryCta: {
+      label: "Get started",
+      armedLabel: "Go to Igdrasil onboarding →",
+      caption: "accounting.igdrasil.se",
+      href: "https://accounting.igdrasil.se",
+    },
     secondaryCta: { label: "Talk to us" },
   },
   footer: {
@@ -158,7 +169,7 @@ export const siteCopy = {
   },
   authBar: {
     logIn: { label: "Contact", href: "mailto:support@igdrasil.se" },
-    signUp: { label: "Get notified", href: "#waitlist" },
+    signUp: { label: "Get started", href: "https://accounting.igdrasil.se" },
   },
 } as const;
 
@@ -292,7 +303,7 @@ export const serviceFeatureRows: FeatureRow[] = [
 const featuredCards = [
   { emoji: "📩", title: "Auto-read invoices", description: "Drop any PDF or photo. Supplier, amounts, VAT, dates — extracted and posted to the right account.", href: "#" },
   { emoji: "🏦", title: "Auto-match bank lines", description: "Nordea, SEB, Swedbank, Handelsbanken — every transaction matched to its invoice.", href: "#" },
-  { emoji: "🪿", title: "Ask, then act", description: "The Goose assistant posts entries, approves invoices, and runs syncs straight from chat.", href: "#" },
+  { iconSrc: "/owl.png", title: "Ask, then act", description: "The Owl assistant posts entries, approves invoices, and runs syncs straight from chat.", href: "#" },
   { emoji: "💬", title: "Reports in plain Swedish", description: "'Show me Q2 VAT' or 'who's late paying me' — answered live, with charts inline.", href: "#" },
   { emoji: "🔁", title: "Two-way Fortnox sync", description: "Vouchers, suppliers, projects, and SIE-4 files flow both ways. No copy-paste.", href: "#" },
   { emoji: "🧾", title: "BAS auto-booking", description: "Every line classified to the right 4-digit BAS account, automatically.", href: "#" },
@@ -316,11 +327,11 @@ const bankCards = [
   { emoji: "📤", title: "Bankgiro & PlusGiro", description: "Outgoing payments matched to supplier invoices, ready for your bank file.", href: "#" },
 ];
 
-const gooseCards = [
-  { emoji: "🪿", title: "Chat-driven actions", description: "Tell Goose to post a journal entry — it does it, with an approval card before anything posts.", href: "#" },
+const owlCards = [
+  { iconSrc: "/owl.png", title: "Chat-driven actions", description: "Tell Owl to post a journal entry — it does it, with an approval card before anything posts.", href: "#" },
   { emoji: "✅", title: "Approve in chat", description: "Send invoices, create suppliers, kick off Fortnox sync — straight from a message.", href: "#" },
   { emoji: "🇸🇪", title: "Skatteverket-grounded", description: "Answers backed by an indexed knowledge base of current Swedish tax guidance.", href: "#" },
-  { emoji: "🌐", title: "Web research built in", description: "Goose can browse the web to verify org numbers, tax rules, and FX rates.", href: "#" },
+  { emoji: "🌐", title: "Web research built in", description: "Owl can browse the web to verify org numbers, tax rules, and FX rates.", href: "#" },
   { emoji: "🛠️", title: "60+ MCP tools", description: "Every Fortnox action — and every internal action — exposed as a tool the assistant can call.", href: "#" },
   { emoji: "🔮", title: "Pick your model", description: "Anthropic Claude or Google Gemini — your choice, configurable per user and per company.", href: "#" },
 ];
@@ -347,7 +358,7 @@ export const automationsTabs: AutomationsTab[] = [
   { id: "featured", label: "Featured", cards: featuredCards },
   { id: "receipts", label: "Receipts & Invoices", cards: receiptsCards },
   { id: "bank", label: "Bank Matching", cards: bankCards },
-  { id: "goose", label: "Goose Assistant", cards: gooseCards },
+  { id: "owl", label: "Owl Assistant", cards: owlCards },
   { id: "reports", label: "Reports & Insights", cards: reportsCards },
   { id: "fortnox", label: "Fortnox Sync", cards: fortnoxCards },
 ];
@@ -475,7 +486,7 @@ export const contextGraphFeatures: ScaleCard[] = [
 /* ───────────────────── built to scale ─────────────────────────────── */
 
 export const scaleCards: ScaleCard[] = [
-  { title: "Collaboration", description: "Real-time collaboration with your team on documents, tasks, and shared views." },
+  { title: "AI-first workflows", description: "Agents draft, reconcile, and route the work — your team reviews, approves, and ships." },
   { title: "Style", description: "Go beyond dark mode. Unique themes, fonts, and color palettes to match your vibe." },
   { title: "Speed", description: "Blazing fast keyboard shortcuts, search, and navigation." },
   { title: "Security", description: "Third-party tested. Encrypted in transit and at rest." },
@@ -570,9 +581,9 @@ export const footerColumns: FooterColumn[] = [
     heading: "Company",
     links: [
       { label: "About", href: "/#about" },
-      { label: "Privacy", href: "/#legal" },
-      { label: "Terms", href: "/#legal" },
-      { label: "GDPR", href: "/#legal" },
+      { label: "Privacy", href: "/privacy" },
+      { label: "Terms", href: "/terms" },
+      { label: "GDPR", href: "/privacy" },
     ],
   },
   {
@@ -809,10 +820,10 @@ export const heroMockupContent = {
 
 export const testimonial = {
   quote:
-    "Bookkeeping is the one thing every founder dreads and the one thing every business needs to get right. Igdrasil takes it off the table — we ship product while they handle the books.",
-  author: "Coming soon",
-  role: "Beta clients launching Q2 2026",
-  avatar: "/images/jacobpeters.jpeg",
+    "Accounting is a regulatory requirement for every company and we believe that accounting software should be democratized and accessible to all companies. This is more important than ever for small businesses and new entrepreneurs starting a company in Sweden today.",
+  author: "",
+  role: "",
+  avatar: "/images/philip.jpeg",
 };
 
 export const founderNote = {

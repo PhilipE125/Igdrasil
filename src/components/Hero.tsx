@@ -1,24 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { ArmedCta } from "@/components/ArmedCta";
 import { DemoApp } from "@/components/DemoApp";
 import { siteCopy } from "@/lib/content";
 
 export function Hero() {
   const { hero } = siteCopy;
-  const [email, setEmail] = useState("");
-  const [status, setStatus] = useState<"idle" | "loading" | "success">("idle");
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email) return;
-    setStatus("loading");
-    setTimeout(() => {
-      setStatus("success");
-      setEmail("");
-    }, 1200);
-  };
   return (
     <section className="bg-background relative">
       <div
@@ -58,47 +46,32 @@ export function Hero() {
             {hero.sub}
           </p>
 
-          <div
-            id="waitlist"
-            className="mx-auto flex w-full max-w-md flex-col items-center gap-2 scroll-mt-24"
-          >
-            {status === "success" ? (
-              <p className="h-11 inline-flex items-center text-base font-semibold text-foreground">
-                You&apos;re on the list. We&apos;ll be in touch.
-              </p>
-            ) : (
-              <form
-                onSubmit={handleSubmit}
-                className="flex w-full items-center gap-2"
-              >
-                <input
-                  id="waitlist-email"
-                  type="email"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="you@example.com"
-                  disabled={status === "loading"}
-                  aria-label="Email address"
-                  className="h-11 flex-1 rounded-[10px] border border-input bg-layer-3 px-4 text-base text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-foreground/40 focus:ring-2 focus:ring-foreground/15 transition-all"
-                />
-                <button
-                  type="submit"
-                  disabled={status === "loading"}
-                  className="inline-flex h-11 items-center justify-center rounded-[10px] bg-foreground px-6 text-base font-semibold text-background shadow-[inset_0_-2px_0_0_rgba(0,0,0,0.2)] hover:bg-foreground/85 hover:shadow-none disabled:opacity-70 disabled:cursor-not-allowed transition-all"
-                >
-                  {status === "loading" ? "…" : hero.primaryCta.label}
-                </button>
-              </form>
-            )}
-            <p className="text-sm text-black/70">
-              Join waitlist for free onboarding
-            </p>
+          <div className="mx-auto flex w-full max-w-md flex-col items-center">
+            <ArmedCta
+              href={hero.primaryCta.href}
+              label={hero.primaryCta.label}
+              armedLabel={hero.primaryCta.armedLabel}
+              caption={hero.primaryCta.caption}
+            />
           </div>
         </div>
       </div>
 
       <DemoApp />
+
+      <div className="md:hidden relative z-10 mt-6 mb-2 flex flex-col items-center gap-1.5 px-4">
+        <span className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground whitespace-nowrap">
+          {hero.beta.offer}
+        </span>
+        <div className="inline-flex max-w-[calc(100vw-2rem)] items-center gap-x-2 rounded-full bg-popover/70 ring-1 ring-border shadow-md shadow-black/[0.065] backdrop-blur-xl px-4 py-1.5 leading-tight">
+          <span className="font-display text-sm font-bold text-foreground whitespace-nowrap">
+            {hero.beta.price}
+          </span>
+          <span className="font-display text-sm font-bold text-foreground whitespace-nowrap">
+            {hero.beta.markup}
+          </span>
+        </div>
+      </div>
     </section>
   );
 }

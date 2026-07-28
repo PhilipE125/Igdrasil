@@ -7,7 +7,7 @@ export function BuiltToScale() {
   const { heading, sub, videoCard } = siteCopy.builtToScale;
   const [collaboration, ...rest] = scaleCards;
   return (
-    <section className="bg-background @container flex min-h-dvh items-center py-24">
+    <section className="bg-background @container flex items-center py-16 md:py-20">
       <div className="mx-auto w-full max-w-6xl px-6 lg:px-12">
         <div className="text-center mb-12 md:mb-16">
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-black tracking-[0.02em] text-foreground">
@@ -20,9 +20,9 @@ export function BuiltToScale() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
           {/* Big Collaboration card with embedded accounting pipeline demo */}
-          <div className="lg:col-span-3 border border-border bg-card rounded-[2px] overflow-hidden">
+          <div className="lg:col-span-3 border border-border bg-card rounded-2xl overflow-hidden">
             <div className="p-5 sm:p-6 border-b border-border/60">
-              <div className="size-8 rounded-[2px] bg-layer-3 border border-border grid place-items-center text-xs font-bold text-muted-foreground">
+              <div className="size-8 rounded-lg bg-layer-3 border border-border grid place-items-center text-xs font-bold text-muted-foreground">
                 1
               </div>
               <h3 className="text-xl font-semibold text-foreground mt-3">
@@ -42,7 +42,7 @@ export function BuiltToScale() {
               return (
                 <div
                   key={card.title}
-                  className="border border-gray-200/70 bg-white text-gray-900 p-6 rounded-[2px] flex flex-col"
+                  className="border border-gray-200/70 bg-white text-gray-900 p-6 rounded-2xl flex flex-col"
                   style={{ minHeight: 340 }}
                 >
                   <h3 className="text-lg font-semibold">{card.title}</h3>
@@ -96,10 +96,10 @@ export function BuiltToScale() {
             return (
               <div
                 key={card.title}
-                className="border border-border bg-card p-6 rounded-[2px] flex flex-col gap-2"
+                className="border border-border bg-card p-6 rounded-2xl flex flex-col gap-2"
                 style={{ minHeight: 200 }}
               >
-                <div className="size-8 rounded-[2px] bg-layer-3 border border-border grid place-items-center text-xs font-bold text-muted-foreground">
+                <div className="size-8 rounded-lg bg-layer-3 border border-border grid place-items-center text-xs font-bold text-muted-foreground">
                   {i + 2}
                 </div>
                 <h3 className="text-lg font-semibold text-foreground mt-2">
@@ -112,7 +112,7 @@ export function BuiltToScale() {
             );
           })}
 
-          <div className="lg:col-span-3 border border-border bg-card rounded-[2px] overflow-hidden grid lg:grid-cols-2">
+          <div className="lg:col-span-3 border border-border bg-card rounded-2xl overflow-hidden grid lg:grid-cols-2">
             <div className="p-8">
               <h3 className="text-2xl font-semibold text-foreground">{videoCard.title}</h3>
               <p className="mt-2 text-base text-muted-foreground max-w-md">

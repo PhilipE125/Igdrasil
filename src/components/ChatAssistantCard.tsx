@@ -52,6 +52,10 @@ export function ChatAssistantCard({ active = true }: { active?: boolean }) {
   }, []);
 
   useEffect(() => {
+    if (active && !reducedMotion) setStep(0);
+  }, [active, reducedMotion]);
+
+  useEffect(() => {
     if (reducedMotion) {
       setStep(6);
       return;

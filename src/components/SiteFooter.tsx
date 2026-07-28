@@ -13,9 +13,9 @@ export function SiteFooter() {
             <Link
               aria-label="go home"
               href="/"
-              className="inline-flex items-center gap-2 text-foreground hover:opacity-80 transition-opacity"
+              className="inline-flex items-center gap-0 text-foreground hover:opacity-80 transition-opacity"
             >
-              <Image src="/logo.svg" alt="" width={28} height={28} className="size-7" />
+              <Image src="/igdrasil_logo.svg" alt="" width={44} height={44} className="size-10" />
               <span className="font-display text-xl font-semibold tracking-wider">
                 Igdrasil
               </span>

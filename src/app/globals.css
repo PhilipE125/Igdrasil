@@ -97,6 +97,7 @@
   --animate-eq3: eq3 1.3s ease-in-out infinite;
   --animate-expand-progress: expandProgress var(--expand-progress-duration, 4s) linear forwards;
   --animate-terminal-cursor: terminal-cursor 1s steps(2, start) infinite;
+  --animate-drain: drain var(--drain-duration, 6s) linear forwards;
 }
 
 /* ─── Theme variables ─────────────────────────────────────────────────── */
@@ -206,6 +207,16 @@
   to { visibility: hidden; }
 }
 
+/* Armed-CTA release timer — drains along the button's bottom edge. */
+@keyframes drain {
+  from { transform: scaleX(1); }
+  to { transform: scaleX(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-drain { animation: none; transform: scaleX(1); }
+}
+
 /* ─── Base layer ─────────────────────────────────────────────────────── */
 
 @layer base {
@@ -215,7 +226,6 @@
   html {
     color-scheme: light;
     background-color: var(--background);
-    overflow-x: hidden;
     overscroll-behavior: none;
     font-family: var(--font-sans);
   }
@@ -227,7 +237,6 @@
     color: var(--foreground);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
   }
   ::selection {
     background-color: var(--primary);
@@ -240,6 +249,10 @@
 @layer utilities {
   .font-display {
     font-family: var(--font-display);
+  }
+  /* Armed state of a two-step CTA — foreground nudged toward the accent. */
+  .bg-foreground-armed {
+    background-color: color-mix(in srgb, var(--foreground) 86%, var(--accent));
   }
   .bg-layer-1 { background-color: var(--layer-1); }
   .bg-layer-2 { background-color: var(--layer-2); }

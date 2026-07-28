@@ -28,7 +28,7 @@ export function ProductFeatures() {
   return (
     <section
       id="product"
-      className="bg-background @container flex min-h-dvh items-center py-24"
+      className="bg-background @container flex items-center py-16 md:py-20"
     >
       <div className="mx-auto w-full max-w-6xl px-6 lg:px-12">
         <div className="text-center mb-10 md:mb-12">

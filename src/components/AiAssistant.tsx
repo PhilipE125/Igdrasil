@@ -42,7 +42,7 @@ export function AiAssistant() {
     <section
       ref={sectionRef}
       id="ai"
-      className="bg-background @container flex min-h-dvh items-center py-16 sm:py-20 md:py-24"
+      className="bg-background @container flex items-center py-12 sm:py-16 md:py-20"
     >
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-12">
         <div className="text-center mb-10 sm:mb-12 md:mb-16">
@@ -69,10 +69,10 @@ export function AiAssistant() {
                   ? { flexGrow: displayActive === i ? 3 : 1, flexBasis: 0 }
                   : undefined
               }
-              className={`min-w-0 cursor-pointer transition-[flex-grow] duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] ${
+              className={`min-w-0 cursor-pointer transition-[flex-grow,filter,opacity] duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] ${
                 displayActive === i
-                  ? ""
-                  : "lg:[&_*]:[animation-play-state:paused]"
+                  ? "lg:blur-0 lg:opacity-100"
+                  : "lg:[&_*]:[animation-play-state:paused] lg:blur-[3px] lg:opacity-70"
               }`}
             >
               <Card active={isLg ? displayActive === i : true} />

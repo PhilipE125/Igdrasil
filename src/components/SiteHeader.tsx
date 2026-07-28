@@ -9,21 +9,12 @@ import { navDropdowns, navLinks, siteCopy } from "@/lib/content";
 import { cn } from "@/lib/utils";
 
 // Cost simulation constants
-const FLAT_FEE_SEK = 25;
+const FLAT_FEE_SEK = 250;
 const TOKENS_PER_INVOICE = 10_000;
 const INPUT_PRICE_PER_M_USD = 0.25;
 const OUTPUT_PRICE_PER_M_USD = 1.5;
 const MARKUP = 1.1;
 const USD_TO_SEK = 10.5;
-
-// Barbell silhouette: top pill (576 wide x 44 tall, centered), narrow waist
-// (32 wide), bottom banner (760 wide x 60 tall). Concave fillets (R=8) at the
-// pill→waist→banner transitions; rounded outer corners (R=12).
-const BARBELL_PATH =
-  "M 104 0 L 656 0 A 12 12 0 0 1 668 12 L 668 32 A 12 12 0 0 1 656 44 L 404 44 A 8 8 0 0 0 404 60 L 748 60 A 12 12 0 0 1 760 72 L 760 108 A 12 12 0 0 1 748 120 L 12 120 A 12 12 0 0 1 0 108 L 0 72 A 12 12 0 0 1 12 60 L 356 60 A 8 8 0 0 0 356 44 L 104 44 A 12 12 0 0 1 92 32 L 92 12 A 12 12 0 0 1 104 0 Z";
-const BARBELL_MASK_URL = `url("data:image/svg+xml;utf8,${encodeURIComponent(
-  `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 760 120' preserveAspectRatio='none'><path d='${BARBELL_PATH}' fill='black'/></svg>`,
-)}")`;
 
 // 50/50 split between input and output tokens, raw cost (no markup)
 const RAW_TOKEN_SEK_PER_INVOICE =
@@ -34,21 +25,19 @@ const RAW_TOKEN_SEK_PER_INVOICE =
 export function SiteHeader() {
   const [openId, setOpenId] = useState<string | null>(null);
   const [invoiceCount, setInvoiceCount] = useState(100);
+  const [scrolled, setScrolled] = useState(false);
   const headerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 80);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const tokensSek = invoiceCount * RAW_TOKEN_SEK_PER_INVOICE;
   const markupSek = tokensSek * (MARKUP - 1);
   const monthlyTotalSek = FLAT_FEE_SEK + tokensSek + markupSek;
-
-  const focusWaitlist = (e: React.MouseEvent) => {
-    if (siteCopy.authBar.signUp.href !== "#waitlist") return;
-    e.preventDefault();
-    setOpenId(null);
-    const target = document.getElementById("waitlist");
-    const input = document.getElementById("waitlist-email") as HTMLInputElement | null;
-    target?.scrollIntoView({ behavior: "smooth", block: "center" });
-    setTimeout(() => input?.focus({ preventScroll: true }), 600);
-  };
 
   // Click-outside closes the dropdown
   useEffect(() => {
@@ -74,53 +63,39 @@ export function SiteHeader() {
       <Link
         aria-label="home"
         href="/"
-        className="fixed top-3 left-3 md:top-6 md:left-8 z-50 flex items-center gap-2 md:gap-3 text-foreground hover:opacity-80 transition-opacity"
+        className={cn(
+          "fixed top-2 left-2 md:top-6 md:left-8 z-50 flex items-center gap-3 md:gap-0 text-foreground transition-opacity duration-200",
+          scrolled
+            ? "opacity-0 pointer-events-none"
+            : "opacity-100 hover:opacity-80",
+        )}
       >
-        <Image src="/logo.svg" alt="" width={56} height={56} className="size-9 md:size-14" />
+        <Image src="/igdrasil_logo.svg" alt="" width={96} height={96} className="size-10 md:size-14" />
         <span className="hidden md:inline font-display text-3xl md:text-4xl font-semibold tracking-wider">Igdrasil</span>
       </Link>
 
-      <div className="fixed top-3 right-3 md:top-6 md:right-8 z-50">
+      <div
+        className={cn(
+          "fixed top-2 right-2 md:top-6 md:right-8 z-50 transition-opacity duration-200",
+          scrolled ? "opacity-0 pointer-events-none" : "opacity-100",
+        )}
+      >
         <ThemeToggle />
       </div>
 
     <div ref={headerRef} className="fixed inset-x-0 top-3 z-50 flex justify-center px-4 pointer-events-none">
-      <div
-        className="relative pointer-events-none"
-        style={{
-          width: "min(760px, calc(100vw - 1rem))",
-          height: 120,
-        }}
-      >
-        {/* Visual barbell silhouette — single masked layer providing the
-            connected pill+waist+banner shape with concave fillets. */}
-        <div
-          aria-hidden="true"
-          className={cn(
-            "absolute inset-0 bg-popover/70 backdrop-blur-xl",
-            "transition-opacity duration-200",
-          )}
-          style={{
-            maskImage: BARBELL_MASK_URL,
-            WebkitMaskImage: BARBELL_MASK_URL,
-            maskSize: "100% 100%",
-            WebkitMaskSize: "100% 100%",
-            maskRepeat: "no-repeat",
-            WebkitMaskRepeat: "no-repeat",
-            filter: "drop-shadow(0 1px 2px rgba(0,0,0,0.08))",
-          }}
-        />
-
       <header
         role="banner"
         data-state={openId ? "active" : "inactive"}
         className={cn(
-          "absolute top-0 left-1/2 -translate-x-1/2 pointer-events-auto h-11",
-          "w-[calc(100vw-7rem)] md:w-[75.8%] md:max-w-[576px] py-1.5 pl-1.5 pr-1.5",
+          "pointer-events-auto relative bg-popover/50 ring-1 ring-border shadow-md shadow-black/[0.065] rounded-xl backdrop-blur-xl",
+          "transition-[max-width,padding] duration-300 ease-out",
+          openId ? "max-w-[640px] py-1 px-1 lg:py-1.5 lg:px-1.5" : "max-w-xl py-1 pl-1 pr-1 lg:py-1.5 lg:pl-1.5 lg:pr-1.5",
         )}
       >
         <div className="flex items-center gap-0.5 lg:gap-1">
-          <nav aria-label="Main" className="flex items-center gap-0.5">
+          {/* Nav */}
+          <nav aria-label="Main" className="flex items-center gap-0">
             {navDropdowns.map((d) => {
               const isOpen = openId === d.label;
               return (
@@ -133,7 +108,7 @@ export function SiteHeader() {
                       setOpenId((cur) => (cur === d.label ? null : d.label))
                     }
                     className={cn(
-                      "group inline-flex h-7 lg:h-8 items-center gap-1 lg:gap-1.5 rounded-md px-2 lg:px-3 text-[12px] lg:text-sm font-medium transition-colors",
+                      "group inline-flex h-7 lg:h-8 items-center gap-1 lg:gap-1.5 rounded-md px-2 lg:px-3 text-[11px] lg:text-sm font-medium transition-colors",
                       isOpen
                         ? "bg-foreground/5 text-foreground"
                         : "text-foreground/75 hover:bg-foreground/5 hover:text-foreground",
@@ -154,18 +129,18 @@ export function SiteHeader() {
               <Link
                 key={l.label}
                 href={l.href}
-                className="hidden md:inline-flex h-8 items-center rounded-md px-3 text-sm font-medium text-foreground/75 hover:bg-foreground/5 hover:text-foreground transition-colors"
+                className="hidden sm:inline-flex h-7 lg:h-8 items-center rounded-md px-2 lg:px-3 text-[11px] lg:text-sm font-medium text-foreground/75 hover:bg-foreground/5 hover:text-foreground transition-colors"
               >
                 {l.label}
               </Link>
             ))}
           </nav>
 
+          {/* Right actions */}
           <div className="ml-auto flex items-center gap-1">
             <Link
               href={siteCopy.authBar.signUp.href}
-              onClick={focusWaitlist}
-              className="inline-flex h-7 lg:h-8 items-center rounded-md bg-foreground px-2 lg:px-3 text-[11px] lg:text-xs font-semibold text-background shadow-[inset_0_-2px_0_0_rgba(0,0,0,0.2)] hover:bg-foreground/85 hover:shadow-none transition-all"
+              className="inline-flex h-7 lg:h-8 items-center rounded-md bg-foreground px-2 lg:px-3 text-[10px] lg:text-xs font-semibold text-background shadow-[inset_0_-2px_0_0_rgba(0,0,0,0.2)] hover:bg-foreground/85 hover:shadow-none transition-all"
             >
               {siteCopy.authBar.signUp.label}
             </Link>
@@ -231,7 +206,7 @@ export function SiteHeader() {
                     {itemList}
                     <div className="border-t lg:border-t-0 lg:border-l border-border pt-3 lg:pt-3 lg:pl-4 lg:pr-3 lg:py-3 px-3 pb-3 text-left">
                       <p className="leading-tight">
-                        <span className="text-3xl font-bold text-foreground">25 SEK</span>
+                        <span className="text-3xl font-bold text-foreground">250 SEK</span>
                         <span className="ml-1.5 text-xs text-muted-foreground">/ month</span>
                       </p>
                       <p className="mt-1.5 leading-tight">
@@ -326,34 +301,8 @@ export function SiteHeader() {
             })}
           </div>
         </div>
-      </header>
 
-      {/* Beta banner — bottom region of the barbell */}
-      <div
-        aria-hidden={openId ? "true" : "false"}
-        className={cn(
-          "absolute bottom-0 inset-x-0 h-[60px] pointer-events-auto",
-          "flex items-center justify-center px-6 sm:px-10",
-          "transition-opacity duration-200",
-          openId ? "opacity-0 pointer-events-none" : "opacity-100",
-        )}
-      >
-        <div className="flex flex-wrap items-baseline justify-center gap-x-2 sm:gap-x-3 gap-y-0 leading-tight">
-          <span className="text-[9px] sm:text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
-            {siteCopy.hero.beta.offer}
-          </span>
-          <span className="font-display text-sm sm:text-base font-bold text-foreground whitespace-nowrap">
-            {siteCopy.hero.beta.price}
-          </span>
-          <span className="font-display text-[10px] sm:text-xs font-bold text-foreground/85">
-            {siteCopy.hero.beta.markup}
-          </span>
-          <span className="text-[8px] sm:text-[10px] text-muted-foreground">
-            {siteCopy.hero.beta.note}
-          </span>
-        </div>
-      </div>
-      </div>
+      </header>
     </div>
     </>
   );

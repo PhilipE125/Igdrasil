@@ -4,6 +4,7 @@ node_modules/
 .pnp.js
 
 # Build
+.cache/
 .next/
 out/
 build/
@@ -49,6 +50,6 @@ next-env.d.ts
 temp/
 
 # Reference material — large binary assets kept locally only
-reference/twenty-website-new/public/images/
-reference/twenty-website-new/public/illustrations/
-reference/twenty-website-new/output/
+docs/reference/twenty-website-new/public/images/
+docs/reference/twenty-website-new/public/illustrations/
+docs/reference/twenty-website-new/output/

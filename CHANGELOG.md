@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - Raised the project Node.js baseline to 24 across local development, CI, Docker, and contributor-facing documentation
+- Moved generated Next.js and TypeScript output under `.cache/` to keep the repository root cleaner
 
 ## [0.3.1] - 2026-03-29
 

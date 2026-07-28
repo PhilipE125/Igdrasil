@@ -7,7 +7,7 @@ import { Integrations } from "./Integrations";
 export function ContextGraph() {
   const { heading, sub } = siteCopy.contextGraph;
   return (
-    <section className="bg-background flex min-h-dvh flex-col justify-center py-24 overflow-hidden">
+    <section className="bg-background flex flex-col justify-center py-16 md:py-20 overflow-hidden">
       <div className="mx-auto w-full max-w-6xl px-6 lg:px-12">
         <div className="text-center mb-12">
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-black tracking-[0.02em] text-foreground">

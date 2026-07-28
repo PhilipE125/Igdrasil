@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 export function AgentApi() {
   const c = siteCopy.agentApi;
   return (
-    <section className="bg-background py-24 md:py-32">
+    <section className="bg-background py-16 md:py-20">
       <div className="mx-auto w-full max-w-6xl px-6 lg:px-12">
         <div className="grid items-center gap-12 lg:grid-cols-[1fr_1.15fr] lg:gap-16">
           {/* Copy */}

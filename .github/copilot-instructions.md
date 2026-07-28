@@ -17,14 +17,32 @@ A reusable template for reverse-engineering any website into a clean, modern Nex
 - **UI:** shadcn/ui (Radix primitives, Tailwind CSS v4, `cn()` utility)
 - **Icons:** Lucide React (default — will be replaced/supplemented by extracted SVGs)
 - **Styling:** Tailwind CSS v4 with oklch design tokens
-- **Deployment:** Vercel
+- **Deployment:** Static export → S3 + CloudFront at https://igdrasil.se
 
 ## Commands
 - `npm run dev` — Start dev server
-- `npm run build` — Production build
+- `npm run build` — Static export into `.cache/next`
 - `npm run lint` — ESLint check
 - `npm run typecheck` — TypeScript check
 - `npm run check` — Run lint + typecheck + build
+
+`npm start` does **not** work — `next.config.ts` uses `output: "export"`, so
+there is no server. To preview a build locally: `npx serve .cache/next`.
+
+## Deploying
+
+**Read `docs/DEPLOYMENT.md` before any deploy.** It has the bucket and
+distribution IDs, the exact sync commands, the cache-header split, and rollback
+steps. Deploys are manual; production is live at https://igdrasil.se.
+
+Two things that will bite you if you skip it:
+
+- **Always `export PATH="/opt/homebrew/bin:$PATH"` first.** The default `node`
+  may resolve into ChatGPT.app, which cannot load Next's native SWC binary. Next
+  falls back to WASM, disabling Turbopack and making builds slow enough to
+  exhaust system memory. A healthy build takes under 2 seconds.
+- **Always `rm -rf .cache/next` before building.** `distDir` points there and
+  the export lands in the same directory, so stale artifacts get published.
 
 ## Code Style
 - TypeScript strict mode, no `any`

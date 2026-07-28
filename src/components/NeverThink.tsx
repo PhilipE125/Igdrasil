@@ -1,6 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import {
   ArrowRight,
@@ -471,11 +472,6 @@ function ScenePosting() {
 /* ───────────────── Scene 4: Closed report ───────────────── */
 
 function SceneReport() {
-  const kpis = [
-    { label: "Revenue", value: "1 240 800 kr", delta: "+18%" },
-    { label: "Gross margin", value: "64.2%", delta: "+4.1pp" },
-    { label: "Burn", value: "−142 300 kr", delta: "−12%" },
-  ];
   const messages = [
     {
       from: "Linnea",
@@ -502,48 +498,10 @@ function SceneReport() {
               Report ready
             </div>
           </div>
-          <Card className="p-5">
-            <div className="flex items-start justify-between gap-3 pb-4 border-b border-black/[0.06]">
-              <div className="min-w-0">
-                <div className="text-[10px] uppercase tracking-wider text-gray-500">
-                  Net income
-                </div>
-                <div className="mt-1 text-2xl font-display text-gray-900 tracking-tight">
-                  +248 100 kr
-                </div>
-              </div>
-              <div className="shrink-0 text-[11px] text-gray-900 bg-[#ee8fe0]/15 rounded-full px-2.5 py-1 border border-[#ee8fe0]/40">
-                +22% MoM
-              </div>
-            </div>
-            <NetIncomeSparkline />
-            <div className="mt-4 divide-y divide-black/[0.05]">
-              {kpis.map((k, i) => (
-                <motion.div
-                  key={k.label}
-                  initial={{ opacity: 0, y: 6 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: 0.2 + i * 0.08 }}
-                  className="flex items-center justify-between py-2.5 first:pt-0 last:pb-0"
-                >
-                  <div className="text-[11px] uppercase tracking-wider text-gray-500">
-                    {k.label}
-                  </div>
-                  <div className="flex items-baseline gap-2">
-                    <div className="text-[13px] font-mono text-gray-900 whitespace-nowrap">
-                      {k.value}
-                    </div>
-                    <div className="text-[10px] text-gray-500 tabular-nums w-12 text-right">
-                      {k.delta}
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </Card>
+          <SqlReportPanel />
         </div>
 
-        <div className="w-full max-w-sm mx-auto lg:mx-0 space-y-2">
+        <div className="w-full max-w-sm mx-auto lg:mx-0 space-y-2.5">
           <div className="text-[10px] uppercase tracking-wider text-gray-500 mb-2">
             Advisory · Linnea
           </div>
@@ -553,9 +511,20 @@ function SceneReport() {
               initial={{ opacity: 0, y: 6 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: m.delay }}
-              className="rounded-2xl rounded-tl-md bg-white border border-black/10 px-3.5 py-2.5 text-[12.5px] text-gray-800 leading-relaxed shadow-sm"
+              className="flex items-start gap-2"
             >
-              {m.text}
+              <div className="h-7 w-7 shrink-0 rounded-full bg-white border border-black/10 overflow-hidden grid place-items-center shadow-sm">
+                <Image
+                  src="/owl.png"
+                  alt="Linnea"
+                  width={28}
+                  height={28}
+                  className="h-full w-full object-cover"
+                />
+              </div>
+              <div className="flex-1 rounded-2xl rounded-tl-md bg-white border border-black/10 px-3.5 py-2.5 text-[12.5px] text-gray-800 leading-relaxed shadow-sm">
+                {m.text}
+              </div>
             </motion.div>
           ))}
           <motion.div
@@ -573,71 +542,201 @@ function SceneReport() {
   );
 }
 
-/* ───────────────── Net income sparkline ───────────────── */
+/* ───────────────── SQL report panel ───────────────── */
 
-function NetIncomeSparkline() {
-  const points = [50, 46, 48, 38, 36, 30, 32, 24, 20, 18, 14, 4];
-  const months = ["May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec", "Jan", "Feb", "Mar", "Apr"];
-  const W = 240;
-  const H = 64;
-  const stepX = W / (points.length - 1);
-  const linePath = points
-    .map((y, i) => `${i === 0 ? "M" : "L"} ${(i * stepX).toFixed(2)} ${y}`)
-    .join(" ");
-  const areaPath = `${linePath} L ${W} ${H} L 0 ${H} Z`;
-  const lastX = (points.length - 1) * stepX;
-  const lastY = points[points.length - 1];
+function SqlReportPanel() {
+  const data = [80, 100, 60, 90, 200, 1200, 1400, 1100, 1700, 800, 600, 400, 7500];
+  const labels = [
+    "10-19", "10-24", "10-27", "10-30", "10-31", "11-13", "11-21",
+    "11-25", "11-30", "12-03", "12-06", "12-08", "12-31",
+  ];
+  const maxY = 8000;
+  const W = 320;
+  const H = 110;
+  const padX = 22;
+  const padY = 10;
+
+  const points = data.map((v, i) => ({
+    x: padX + ((W - padX * 2) * i) / (data.length - 1),
+    y: H - padY - ((H - padY * 2) * v) / maxY,
+  }));
+  const linePath = makeSmoothPath(points);
+  const baseY = H - padY;
+  const last = points[points.length - 1];
+  const areaPath = `${linePath} L ${last.x.toFixed(2)} ${baseY} L ${points[0].x.toFixed(2)} ${baseY} Z`;
 
   return (
-    <div className="mt-4">
-      <svg
-        viewBox={`0 0 ${W} ${H}`}
-        className="w-full h-16"
-        preserveAspectRatio="none"
-        aria-hidden
-      >
-        <defs>
-          <linearGradient id="ni-fill" x1="0" x2="0" y1="0" y2="1">
-            <stop offset="0%" stopColor="#ee8fe0" stopOpacity="0.32" />
-            <stop offset="100%" stopColor="#ee8fe0" stopOpacity="0" />
-          </linearGradient>
-        </defs>
-        <motion.path
-          d={areaPath}
-          fill="url(#ni-fill)"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.6, duration: 0.6 }}
-        />
-        <motion.path
-          d={linePath}
-          fill="none"
-          stroke="#ee8fe0"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          initial={{ pathLength: 0 }}
-          animate={{ pathLength: 1 }}
-          transition={{ delay: 0.2, duration: 1.2, ease: "easeInOut" }}
-        />
-        <motion.circle
-          cx={lastX}
-          cy={lastY}
-          r="3"
-          fill="#ee8fe0"
-          stroke="white"
-          strokeWidth="1.5"
-          initial={{ scale: 0, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ delay: 1.3, duration: 0.3, type: "spring" }}
-          style={{ transformOrigin: `${lastX}px ${lastY}px` }}
-        />
-      </svg>
-      <div className="flex justify-between text-[9px] font-mono uppercase tracking-wider text-gray-400 mt-1.5 px-0.5">
-        <span>{months[0]}</span>
-        <span>{months[Math.floor(months.length / 2)]}</span>
-        <span>{months[months.length - 1]}</span>
+    <Card className="overflow-hidden">
+      {/* SQL header bar */}
+      <div className="flex items-center justify-between px-3 py-1.5 border-b border-black/[0.06] bg-white">
+        <div className="text-[10px] font-mono text-gray-500 uppercase tracking-[0.15em]">SQL</div>
+        <div className="flex items-center gap-1">
+          <div className="h-3.5 w-3.5 rounded-[3px] bg-gray-100" />
+          <div className="h-3.5 w-3.5 rounded-[3px] bg-gray-100" />
+          <div className="h-3.5 w-3.5 rounded-full bg-[#ee8fe0]/20 grid place-items-center">
+            <span className="size-1.5 rounded-full bg-[#ee8fe0]" />
+          </div>
+        </div>
       </div>
-    </div>
+
+      {/* SQL code */}
+      <div className="px-3 py-2 font-mono text-[9px] leading-relaxed bg-white text-gray-700 overflow-hidden">
+        <SqlLine delay={0.1}>
+          <span className="text-blue-600">SELECT</span> e.entry_date,{" "}
+          <span className="text-blue-600">SUM</span>(l.debit_amount){" "}
+          <span className="text-blue-600">AS</span> daily_expenses
+        </SqlLine>
+        <SqlLine delay={0.2}>
+          <span className="text-blue-600">FROM</span> ledger_entry_lines{" "}
+          <span className="text-blue-600">AS</span> l
+        </SqlLine>
+        <SqlLine delay={0.3}>
+          <span className="text-blue-600">JOIN</span> ledger_entries{" "}
+          <span className="text-blue-600">AS</span> e
+        </SqlLine>
+        <SqlLine delay={0.4}>
+          <span className="text-blue-600">WHERE</span> e.status ={" "}
+          <span className="text-orange-600">&apos;posted&apos;</span>
+        </SqlLine>
+      </div>
+
+      {/* Owl assistant input */}
+      <div className="flex items-center gap-2 px-3 py-1.5 bg-gray-50/70 border-t border-black/[0.06]">
+        <div className="size-5 shrink-0 rounded-full bg-white border border-black/10 overflow-hidden grid place-items-center">
+          <Image src="/owl.png" alt="" width={20} height={20} className="h-full w-full object-cover" />
+        </div>
+        <span className="text-[10px] text-gray-500 italic truncate">
+          Edit this report in plain English…
+        </span>
+        <div className="ml-auto h-5 w-5 rounded-full bg-[#ee8fe0]/15 grid place-items-center shrink-0">
+          <ArrowRight className="h-2.5 w-2.5 text-[#ee8fe0]" />
+        </div>
+      </div>
+
+      {/* Chart title */}
+      <div className="px-3 pt-2 pb-0.5 border-t border-black/[0.06]">
+        <div className="text-[9px] uppercase tracking-wider text-gray-500">
+          Daily expenses · sum
+        </div>
+        <div className="text-base font-display text-gray-900 tracking-tight">
+          14 771 kr
+        </div>
+      </div>
+
+      {/* Chart */}
+      <div className="px-1 pb-2">
+        <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-[110px]" aria-hidden>
+          <defs>
+            <linearGradient id="sql-fill" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0%" stopColor="#ee8fe0" stopOpacity="0.32" />
+              <stop offset="100%" stopColor="#ee8fe0" stopOpacity="0" />
+            </linearGradient>
+          </defs>
+
+          {/* Y axis grid */}
+          {[0, 0.25, 0.5, 0.75, 1].map((p) => (
+            <line
+              key={p}
+              x1={padX}
+              y1={padY + (H - padY * 2) * p}
+              x2={W - padX}
+              y2={padY + (H - padY * 2) * p}
+              stroke="#e5e7eb"
+              strokeDasharray="2 3"
+              strokeWidth="0.7"
+            />
+          ))}
+
+          {/* Y axis labels */}
+          {[0, 2, 4, 6, 8].map((v, i) => (
+            <motion.text
+              key={v}
+              x={padX - 3}
+              y={baseY - ((H - padY * 2) * v) / 8 + 2.5}
+              textAnchor="end"
+              fontSize="6"
+              fill="#9ca3af"
+              fontFamily="ui-monospace,SFMono-Regular,monospace"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5 + i * 0.04, duration: 0.3 }}
+            >
+              {v === 0 ? "0" : `${v}.0k`}
+            </motion.text>
+          ))}
+
+          {/* Area fill */}
+          <motion.path
+            d={areaPath}
+            fill="url(#sql-fill)"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.0, duration: 0.6 }}
+          />
+
+          {/* Line */}
+          <motion.path
+            d={linePath}
+            fill="none"
+            stroke="#ee8fe0"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            initial={{ pathLength: 0 }}
+            animate={{ pathLength: 1 }}
+            transition={{ delay: 0.5, duration: 1.6, ease: "easeInOut" }}
+          />
+
+          {/* End dot */}
+          <motion.circle
+            cx={last.x}
+            cy={last.y}
+            r="2.5"
+            fill="#ee8fe0"
+            stroke="white"
+            strokeWidth="1.2"
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ delay: 2.0, duration: 0.3, type: "spring" }}
+            style={{ transformOrigin: `${last.x}px ${last.y}px` }}
+          />
+        </svg>
+
+        {/* X axis labels */}
+        <div className="flex justify-between px-3 pt-0.5 text-[7px] font-mono text-gray-400 tabular-nums">
+          <span>{labels[0]}</span>
+          <span>{labels[Math.floor(labels.length / 2)]}</span>
+          <span>{labels[labels.length - 1]}</span>
+        </div>
+      </div>
+    </Card>
   );
+}
+
+function SqlLine({ children, delay }: { children: React.ReactNode; delay: number }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: -4 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ delay, duration: 0.3 }}
+      className="whitespace-nowrap overflow-hidden text-ellipsis"
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+function makeSmoothPath(points: { x: number; y: number }[]) {
+  if (points.length < 2) return "";
+  let d = `M ${points[0].x.toFixed(2)} ${points[0].y.toFixed(2)}`;
+  for (let i = 0; i < points.length - 1; i++) {
+    const p0 = points[i];
+    const p1 = points[i + 1];
+    const cpx1 = p0.x + (p1.x - p0.x) / 3;
+    const cpy1 = p0.y;
+    const cpx2 = p1.x - (p1.x - p0.x) / 3;
+    const cpy2 = p1.y;
+    d += ` C ${cpx1.toFixed(2)} ${cpy1.toFixed(2)}, ${cpx2.toFixed(2)} ${cpy2.toFixed(2)}, ${p1.x.toFixed(2)} ${p1.y.toFixed(2)}`;
+  }
+  return d;
 }

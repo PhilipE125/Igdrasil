@@ -15,7 +15,7 @@
 ### Bookkeeping on autopilot
 - **Reads your invoices for you** — supplier, amounts, VAT, dates, line items, all extracted without typing.
 - **Books to the right account** — every line is mapped to the Swedish BAS chart of accounts automatically.
-- **Currency-aware** — invoices in EUR, USD, anything — converted at the right Riksbanken rate, to the öre.
+- **Currency-aware** — invoices in EUR, USD, anything — converted at the right Riksbanken rate, to the ore.
 - **Card and expense rules** — receipts paid with the company card are classified the way you want.
 - **Recognises your suppliers** — once Igdrasil has seen a supplier, it remembers how to book them.
 
@@ -54,9 +54,9 @@
 - **Auto-invoice billable hours** — push them into a customer invoice.
 
 ### Works with what you already use
-- **Fortnox** — full two-way sync (suppliers, accounts, projects, fiscal years, vouchers, attachments, customers, articles, contracts, assets). Bureau (byrå) mode supported.
+- **Fortnox** — full two-way sync (suppliers, accounts, projects, fiscal years, vouchers, attachments, customers, articles, contracts, assets). Bureau (byra) mode supported.
 - **Visma eAccounting** — connect and sync.
-- **Björn Lundén, Briox, Bokio** — all supported.
+- **Bjorn Lundén, Briox, Bokio** — all supported.
 - **SIE-4** import and export — bring your history with you, leave whenever you want.
 - **Gmail and Telegram** for inbound documents.
 
@@ -109,7 +109,7 @@ A growing roster of bank, billing, and ERP connectors, on the same two-way sync 
 
 ## 3. The promise
 
-- **Built for Swedish founders.** Bokföringslagen, Skatteverket, BAS, SIE-4 — all native, not bolted on.
+- **Built for Swedish founders.** Bokforingslagen, Skatteverket, BAS, SIE-4 — all native, not bolted on.
 - **Hands-on when it matters, automated when it doesn't.** A real bookkeeper behind the software for the edge cases.
 - **Pricing without surprises.** Flat monthly fee plus a small markup on the AI compute we actually use on your books. No per-seat fees. No year-end "true-ups".
 - **Your data, exportable.** SIE-4 in, SIE-4 out. Leave whenever you want.

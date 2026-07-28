@@ -72,6 +72,10 @@ export function InboxWorkflowCard({ active = true }: { active?: boolean }) {
   }, []);
 
   useEffect(() => {
+    if (active && !reducedMotion) setStep(0);
+  }, [active, reducedMotion]);
+
+  useEffect(() => {
     if (reducedMotion) {
       setStep(7);
       return;

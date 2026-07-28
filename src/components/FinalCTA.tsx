@@ -1,6 +1,6 @@
 import Image from "next/image";
+import { ArmedCta } from "@/components/ArmedCta";
 import { siteCopy } from "@/lib/content";
-import { WaitlistForm } from "@/components/WaitlistForm";
 
 export function FinalCTA() {
   const c = siteCopy.finalCta;
@@ -31,12 +31,17 @@ export function FinalCTA() {
       </div>
 
       {/* Overlaid content */}
-      <div className="relative z-10 mx-auto w-full max-w-6xl px-6 lg:px-12 text-center py-20 md:py-28">
+      <div className="relative z-10 mx-auto w-full max-w-6xl px-6 lg:px-12 text-center py-14 md:py-20">
         <h2 className="font-display text-5xl md:text-7xl lg:text-[110px] font-black tracking-[0.01em] text-black leading-none drop-shadow-[0_2px_8px_rgba(255,255,255,0.35)]">
           {c.heading}
         </h2>
         <div className="mt-10 flex justify-center">
-          <WaitlistForm />
+          <ArmedCta
+            href={c.primaryCta.href}
+            label={c.primaryCta.label}
+            armedLabel={c.primaryCta.armedLabel}
+            caption={c.primaryCta.caption}
+          />
         </div>
       </div>
     </section>

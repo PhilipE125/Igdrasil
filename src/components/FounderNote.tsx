@@ -5,7 +5,7 @@ import { founderNote } from "@/lib/content";
 
 export function FounderNote() {
   return (
-    <section className="bg-background py-24 md:py-32">
+    <section className="bg-background py-16 md:py-20">
       <div className="mx-auto max-w-3xl px-6 lg:px-12 text-center">
         <p className="font-display text-2xl md:text-3xl lg:text-[34px] leading-snug text-foreground">
           {founderNote.body[0]}

@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     siteName: "Igdrasil AB",
   },
   icons: {
-    icon: "/logo.svg",
+    icon: "/igdrasil_logo.svg",
   },
 };
 
@@ -46,10 +46,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${haffer.variable} ${perfectlyNineties.variable} overflow-x-hidden`}
+      className={`${haffer.variable} ${perfectlyNineties.variable}`}
       suppressHydrationWarning
     >
-      <body className="bg-background text-foreground font-sans antialiased overflow-x-hidden">
+      <body className="bg-background text-foreground font-sans antialiased">
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           {children}
         </ThemeProvider>

@@ -22,22 +22,20 @@ export function Testimonial() {
         />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-4xl px-6 lg:px-12 py-32 md:py-40 text-center">
+      <div className="relative z-10 mx-auto max-w-4xl px-6 lg:px-12 py-20 md:py-28 text-center">
         <p className="font-display text-2xl md:text-4xl lg:text-[44px] leading-tight text-foreground">
           <span aria-hidden="true">&ldquo;</span>
           {testimonial.quote}
           <span aria-hidden="true">&rdquo;</span>
         </p>
-        <div className="mt-10 flex flex-col items-center gap-2">
+        <div className="mt-10 flex flex-col items-center">
           <Image
             src={testimonial.avatar}
-            alt={testimonial.author}
+            alt=""
             width={48}
             height={48}
             className="size-12 rounded-full object-cover"
           />
-          <div className="text-sm font-semibold text-foreground">{testimonial.author}</div>
-          <div className="text-xs text-muted-foreground">{testimonial.role}</div>
         </div>
       </div>
     </section>
