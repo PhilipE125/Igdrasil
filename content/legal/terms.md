@@ -1,10 +1,10 @@
-# General Terms and Conditions — Igdrasil
+# Igdrasil General Terms and Conditions
 
-**Last updated:** 2026-05-01
+**Last updated:** 2026-08-23
 **Effective from:** 2026-05-01
-**Version:** 1.0
+**Version:** 1.1
 
-These general terms and conditions ("**Terms**") govern access to and use of **Igdrasil** ("**Platform**", "**Service**" or "**Services**"), provided by Igdrasil ("**Igdrasil**", "**we**", "**us**", "**our**").
+These general terms and conditions ("**Terms**") govern access to and use of **Igdrasil** ("**Platform**", "**Service**" or "**Services**"), provided by **Igdrasil AB**, org. nr 559570-1011, Kornhamnstorg 61, 111 27 Stockholm, Sweden ("**Igdrasil**", "**we**", "**us**", "**our**").
 
 These Terms form a binding agreement between Igdrasil and the legal entity (limited company, sole trader, or other organization) that subscribes to the Service ("**Customer**", "**you**", "**your**"). By signing up, accessing or using the Service, you confirm that you have read, understood, and accepted these Terms.
 
@@ -24,7 +24,7 @@ Capitalised terms used but not defined elsewhere in these Terms have the meaning
 | **Subscription** | The Customer's contractual right to use the Service, governed by the plan, billing cycle, and term selected at sign-up or as later amended. |
 | **Integration Partner** | A third-party service that the Customer chooses to connect to the Service through an integration. |
 | **Bookkeeping Act** | The Swedish Bookkeeping Act (Bokföringslag (1999:1078)). |
-| **Privacy Notice** | Igdrasil's privacy notice published at `https://igdrasil.se/privacy`. |
+| **Privacy Notice** | Igdrasil's privacy notice published at `https://igdrasil.se/privacy/`. |
 | **DPA** | The data-processing agreement entered into between Igdrasil and the Customer in respect of personal data processed by Igdrasil on the Customer's behalf. |
 
 ## 2. The Service
@@ -33,7 +33,7 @@ Igdrasil offers a complete accounting automation platform that helps businesses 
 
 The Service is delivered as a service over the internet from Igdrasil's infrastructure; no on-premise installation is required.
 
-We may add, change, or remove features as the Service evolves. Material changes that reduce functionality are subject to section 16.
+We may add, change, or remove features as the Service evolves. Material changes that reduce functionality are subject to section 15.
 
 ## 3. Account, Access and Authorized Use
 
@@ -56,7 +56,7 @@ The Customer may use the Service only for its own internal business purposes rel
 - Upload material that the Customer does not have the right to upload, or that contains malware.
 
 ### 3.3 Use of integrations
-When the Customer chooses to connect the Service to an Integration Partner — for example a bank, an email inbox, or a bookkeeping system — the Customer:
+When the Customer chooses to connect the Service to an Integration Partner, for example a bank, an email inbox, or a bookkeeping system, the Customer:
 
 - Accepts the terms of the Integration Partner that are presented during the connection flow, where applicable.
 - Confirms that the Customer is authorized to grant Igdrasil the access required to deliver the relevant feature.
@@ -89,7 +89,7 @@ The Customer is responsible for:
 - Configuring access permissions appropriately within the Service.
 
 ### 4.5 Export and portability
-Customer Data can be exported during the Subscription term in standard formats — including SIE-4 for accounting data. Upon termination of the Subscription, the Customer has 30 days from the termination date to export Customer Data; after that period, Igdrasil will delete Customer Data per section 15.4, subject to the legal-retention exception below.
+Customer Data can be exported during the Subscription term in standard formats, including SIE-4 for accounting data. Upon termination of the Subscription, the Customer has 30 days from the termination date to export Customer Data; after that period, Igdrasil will delete Customer Data per section 14.4, subject to the legal-retention exception below.
 
 ### 4.6 Statutory retention by the Customer
 The Customer remains responsible for retaining accounting records in compliance with the Bookkeeping Act (typically seven years counted from the end of the calendar year of accounting). Igdrasil provides export functionality to support this; the Customer retains the obligation to take, store and maintain those exports independently of the Service.
@@ -106,13 +106,13 @@ Subscriptions are billed in advance on a monthly or annual cycle as selected by 
 Invoices are due 14 days from the invoice date. Late payment incurs interest under the Interest Act (Räntelag (1975:635)) and a reminder fee under the Act on Compensation for Collection Costs (Lag (1981:739)).
 
 ### 5.4 Price changes
-We may change prices upon 60 days' notice to the Customer. New prices apply from the next renewal of the Subscription. The Customer's right to terminate before a price increase takes effect is preserved per section 15.
+We may change prices upon 60 days' notice to the Customer. New prices apply from the next renewal of the Subscription. The Customer's right to terminate before a price increase takes effect is preserved per section 15 (Changes to These Terms).
 
 ### 5.5 Taxes
 The Customer is responsible for any applicable taxes (VAT, withholding) other than taxes assessed on Igdrasil's net income.
 
 ### 5.6 Refunds
-Subscription fees are non-refundable except as required by mandatory law or where Igdrasil is in material breach as defined in section 15.2.
+Subscription fees are non-refundable except as required by mandatory law or where Igdrasil is in material breach as defined in section 14.2.
 
 ## 6. Service Availability and Maintenance
 
@@ -128,8 +128,8 @@ The Service may be temporarily unavailable due to:
 
 - Planned maintenance;
 - Failures or unavailability of upstream service providers or Integration Partners;
-- Force-majeure events (section 17);
-- Suspension under section 15.3.
+- Force-majeure events (section 16);
+- Suspension under section 14.3.
 
 ## 7. Confidentiality
 
@@ -149,16 +149,16 @@ The Service incorporates third-party and open-source components, each licensed u
 ## 9. Personal Data and Data Processing
 
 ### 9.1 Roles
-For personal data contained in Customer Data, the Customer is the **controller** and Igdrasil is the **processor** within the meaning of GDPR Art. 4. For personal data processed by Igdrasil for its own purposes (account administration, billing, security, support, product analytics), Igdrasil is the **controller** — see the Privacy Notice for details.
+For personal data contained in Customer Data, the Customer is the **controller** and Igdrasil is the **processor** within the meaning of GDPR Art. 4. For personal data processed by Igdrasil for its own purposes (account administration, billing, security, support, product analytics), Igdrasil is the **controller**: see the Privacy Notice for details.
 
 ### 9.2 DPA
-By entering into these Terms the Customer also enters into Igdrasil's standard **Data Processing Agreement (DPA)**, which is incorporated by reference. The DPA describes the subject matter, duration, nature and purpose of the processing, the categories of data and data subjects, processor obligations, sub-processor management, audit rights, breach notification, and the international-transfer mechanisms used.
+Igdrasil enters into a written **Data Processing Agreement (DPA)** with each Customer for the personal data Igdrasil processes on the Customer's behalf. Request the current DPA from legal@igdrasil.se; until it is signed, sections 9.3, 9.4 and 10 of these Terms are the Customer's documented instructions. The DPA describes the subject matter, duration, nature and purpose of the processing, the categories of data and data subjects, processor obligations, sub-processor management, audit rights, breach notification, and the international-transfer mechanisms used.
 
 ### 9.3 Customer instructions
 Igdrasil processes personal data only on the Customer's documented instructions, which are deemed to include these Terms, the DPA, and the Customer's configuration of the Service. If Igdrasil believes an instruction violates the GDPR or other applicable law, Igdrasil will inform the Customer.
 
 ### 9.4 Sub-processors
-The Customer authorises Igdrasil to engage sub-processors as set out in the Privacy Notice section 8 and as updated from time to time. We will provide reasonable advance notice of any new sub-processor. The Customer may object to a new sub-processor on reasonable grounds; if Igdrasil cannot accommodate the objection, the Customer may terminate the affected portion of the Service.
+The Customer authorises Igdrasil to engage sub-processors of the categories set out in the Privacy Notice section 8. The current named list is published at [Igdrasil sub-processors](/subprocessors/). We will provide reasonable advance notice of any new sub-processor. The Customer may object to a new sub-processor on reasonable grounds; if Igdrasil cannot accommodate the objection, the Customer may terminate the affected portion of the Service.
 
 ## 10. Security
 
@@ -170,7 +170,7 @@ Igdrasil applies technical and organisational measures appropriate to the nature
 Each party represents and warrants that it has the legal capacity and authority to enter into these Terms.
 
 ### 11.2 Igdrasil service warranty
-Igdrasil warrants that the Service will perform materially in accordance with its published documentation. The Customer's exclusive remedy for breach of this warranty is correction of the non-conformity by Igdrasil or, if correction is not commercially practical, termination per section 15.2 and a pro-rata refund of pre-paid unused fees.
+Igdrasil warrants that the Service will perform materially in accordance with its published documentation. The Customer's exclusive remedy for breach of this warranty is correction of the non-conformity by Igdrasil or, if correction is not commercially practical, termination per section 14.2 and a pro-rata refund of pre-paid unused fees.
 
 ### 11.3 Disclaimer
 Except as expressly stated in section 11.2, the Service is provided "**as is**" and "**as available**". Igdrasil disclaims all other warranties, express or implied, including warranties of merchantability, fitness for a particular purpose, non-infringement, accuracy, completeness or uninterrupted operation, to the maximum extent permitted by law.
@@ -223,12 +223,12 @@ Igdrasil will give reasonable advance notice where practicable.
 ### 14.4 Effect of termination
 Upon termination, the Customer's right to access the Service ends. The Customer may export Customer Data within 30 days of termination. After that period:
 
-- Igdrasil will delete Customer Data from active systems within 90 days.
+- Igdrasil deletes the Customer's records from the production database, and the Customer's stored documents from object storage, within 90 days. A User can also delete their own account and its sole-owned company data from within the Service at any time, which takes effect immediately in the database.
 - Customer Data may persist in encrypted backups for the standard backup retention window, after which it is also deleted.
 - Igdrasil may retain Customer Data longer where required by law (for example, its own bookkeeping records relating to the Customer relationship) or for the establishment, exercise or defence of legal claims.
 
 ### 14.5 Survival
-Sections 4 (Customer Data), 7 (Confidentiality), 8 (IP), 11.3 (Disclaimer), 12 (Liability), 13 (Indemnification), 14.4 (Effect of termination), 17 (Force majeure), 18 (Governing law) and 19 (General) survive termination.
+Sections 4 (Customer Data), 7 (Confidentiality), 8 (IP), 11.3 (Disclaimer), 12 (Liability), 13 (Indemnification), 14.4 (Effect of termination), 16 (Force majeure), 17 (Governing law) and 18 (General) survive termination.
 
 ## 15. Changes to These Terms
 

@@ -590,8 +590,11 @@ export const footerColumns: FooterColumn[] = [
       { label: "Research", href: "/research" },
       { label: "About", href: "/#about" },
       { label: "Privacy", href: "/privacy" },
+      { label: "Cookies", href: "/cookies" },
       { label: "Terms", href: "/terms" },
-      { label: "GDPR", href: "/privacy" },
+      { label: "DPA", href: "/dpa" },
+      { label: "Sub-processors", href: "/subprocessors" },
+      { label: "Security", href: "/security-overview" },
     ],
   },
   {
