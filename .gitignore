@@ -49,7 +49,6 @@ next-env.d.ts
 # Local temp files
 temp/
 
-# Reference material — large binary assets kept locally only
-docs/reference/twenty-website-new/public/images/
-docs/reference/twenty-website-new/public/illustrations/
-docs/reference/twenty-website-new/output/
+# Reference material — vendored third-party codebases kept locally only
+docs/reference/*
+!docs/reference/README.md
