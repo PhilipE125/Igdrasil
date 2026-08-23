@@ -52,3 +52,33 @@ temp/
 # Reference material — vendored third-party codebases kept locally only
 docs/reference/*
 !docs/reference/README.md
+
+# Template scaffolding, docs, and agent config — kept locally, out of the app repo
+docs/
+!docs/reference/README.md
+scripts/
+.agents/
+.amazonq/
+.augment/
+.claude/
+.codex/
+.continue/
+.cursor/
+.gemini/
+.opencode/
+.windsurf/
+.github/
+.clinerules
+.windsurfrules
+.aider.conf.yml
+AGENTS.md
+CLAUDE.md
+GEMINI.md
+README.md
+CHANGELOG.md
+content/README.md
+src/lib/CONTENT.md
+Dockerfile
+Dockerfile.dev
+docker-compose.yml
+.dockerignore
