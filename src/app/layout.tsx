@@ -35,9 +35,6 @@ export const metadata: Metadata = {
       "Exclusive pre-launch access portal for Igdrasil AB. Join the future ecosystem.",
     siteName: "Igdrasil AB",
   },
-  icons: {
-    icon: "/igdrasil_logo.svg",
-  },
 };
 
 export default function RootLayout({
