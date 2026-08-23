@@ -16,6 +16,7 @@ import {
   GitBranch,
   Landmark,
   Layers,
+  LineChart,
   Mail,
   Receipt,
   Send,
@@ -193,6 +194,12 @@ export const navDropdowns: NavDropdown[] = [
       { label: "VAT", href: "/#services", description: "Quarterly VAT reports prepared and filed on time.", Icon: Receipt },
       { label: "Employer Reporting", href: "/#services", description: "AGI and employer declarations without the spreadsheets.", Icon: FileText },
       { label: "Recurring Reports", href: "/#services", description: "Monthly P&L, cash flow, and KPI snapshots.", Icon: CalendarClock },
+    ],
+  },
+  {
+    label: "Resurser",
+    items: [
+      { label: "Research", href: "/research", description: "Standing measurements of the Swedish accounting economy, updated on a schedule.", Icon: LineChart },
     ],
   },
 ];
@@ -580,6 +587,7 @@ export const footerColumns: FooterColumn[] = [
   {
     heading: "Company",
     links: [
+      { label: "Research", href: "/research" },
       { label: "About", href: "/#about" },
       { label: "Privacy", href: "/privacy" },
       { label: "Terms", href: "/terms" },

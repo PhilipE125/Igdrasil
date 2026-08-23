@@ -93,3 +93,64 @@ export interface SocialLink {
   href: string;
   Icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
 }
+
+/* ───────────────────── research ──────────────────────────────────── */
+
+/** One weekly reading. `partial` marks a period that is still being counted. */
+export interface ResearchPoint {
+  /** Display label, e.g. "w34". */
+  label: string;
+  year: number;
+  value: number;
+  partial?: boolean;
+}
+
+/**
+ * A standing market-research series: a query that re-runs on a fixed cadence
+ * against a named public source. Planned series carry no metric yet.
+ */
+export interface ResearchSeries {
+  id: string;
+  title: string;
+  /** The question the series answers, in one sentence. */
+  question: string;
+  /** One-line description for the register row. */
+  what: string;
+  source: string;
+  cadence: string;
+  status: "live" | "building" | "planned";
+  /** Expected first publication, for planned series. */
+  eta?: string;
+  href: string;
+  updatedLabel?: string;
+  /** Discrete counts read best as columns; a level that persists reads as an area. */
+  chart?: "column" | "area";
+  metric?: {
+    unit: string;
+    /** Short unit shown under the register figure, e.g. "/ week". */
+    shortUnit: string;
+    /** Weekly readings, oldest first. The final entry is the week in progress. */
+    points: ResearchPoint[];
+  };
+  breakdown?: {
+    /** Ranked lists carry a delta per row; shares carry a percentage of the whole. */
+    kind: "ranked" | "share";
+    caption: string;
+    /** Right-aligned label above the values. */
+    valueCaption: string;
+    rows: { name: string; sub?: string; value: number; deltaPct?: number }[];
+    footnote?: string;
+  };
+  /** The written read on what the latest numbers show. */
+  read?: string;
+}
+
+/** A dated piece of writing about one of the series. */
+export interface ResearchArticle {
+  /** ISO date — formatted for display at render time. */
+  date: string;
+  topic: string;
+  title: string;
+  dek?: string;
+  href: string;
+}
