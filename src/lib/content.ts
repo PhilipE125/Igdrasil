@@ -21,6 +21,7 @@ import {
   Receipt,
   Send,
   Sparkles,
+  Users,
   Wallet,
 } from "lucide-react";
 
@@ -200,6 +201,8 @@ export const navDropdowns: NavDropdown[] = [
     label: "Resurser",
     items: [
       { label: "Research", href: "/research", description: "Standing measurements of the Swedish accounting economy, updated on a schedule.", Icon: LineChart },
+      { label: "Why Igdrasil", href: "/why-igdrasil", description: "What the platform does, how it works, and where the guardrails sit.", Icon: BookOpen },
+      { label: "About us", href: "/about", description: "The founders behind Igdrasil and why we are building it.", Icon: Users },
     ],
   },
 ];
@@ -572,6 +575,7 @@ export const footerColumns: FooterColumn[] = [
       { label: "Receipts & invoices → Fortnox", href: "/#product" },
       { label: "AI Assistant", href: "/#product" },
       { label: "Reports, Analytics & Integrations", href: "/#product" },
+      { label: "Why Igdrasil", href: "/why-igdrasil" },
     ],
   },
   {
@@ -588,7 +592,7 @@ export const footerColumns: FooterColumn[] = [
     heading: "Company",
     links: [
       { label: "Research", href: "/research" },
-      { label: "About", href: "/#about" },
+      { label: "About", href: "/about" },
       { label: "Privacy", href: "/privacy" },
       { label: "Cookies", href: "/cookies" },
       { label: "Terms", href: "/terms" },
