@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { SITE_URL } from "@/lib/seo";
 import "./globals.css";
 
 const haffer = localFont({
@@ -24,17 +25,24 @@ const perfectlyNineties = localFont({
   fallback: ["Georgia", "serif"],
 });
 
+const TITLE = "Igdrasil | AI accounting for Swedish businesses";
+const DESCRIPTION =
+  "Igdrasil is a Swedish AI-powered accounting platform: bookkeeping, invoicing, payroll, VAT, reporting and forecasting in one system, with accounting-specific guardrails and human approval before anything is posted.";
+
 export const metadata: Metadata = {
-  title: "Igdrasil AB | Coming Soon",
-  description:
-    "Exclusive pre-launch access portal for Igdrasil AB. Join the future ecosystem.",
-  metadataBase: new URL("https://igdrasil.se"),
+  title: TITLE,
+  description: DESCRIPTION,
+  metadataBase: new URL(SITE_URL),
+  alternates: { canonical: "/" },
   openGraph: {
-    title: "Igdrasil AB | Coming Soon",
-    description:
-      "Exclusive pre-launch access portal for Igdrasil AB. Join the future ecosystem.",
-    siteName: "Igdrasil AB",
+    title: TITLE,
+    description: DESCRIPTION,
+    url: "/",
+    siteName: "Igdrasil",
+    locale: "en_GB",
+    type: "website",
   },
+  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({
