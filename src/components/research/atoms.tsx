@@ -76,26 +76,6 @@ export function Delta({
   );
 }
 
-/** The uppercase micro-label the landing page uses above every section. */
-export function Eyebrow({
-  children,
-  className,
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return (
-    <p
-      className={cn(
-        "text-[11px] font-semibold uppercase tracking-[0.18em] text-subtle-foreground",
-        className,
-      )}
-    >
-      {children}
-    </p>
-  );
-}
-
 /**
  * One wide search bar per table. Presentational — the owning client component
  * holds the query, so this file stays free of state.

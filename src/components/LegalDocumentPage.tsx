@@ -3,6 +3,7 @@ import { ArrowLeft } from "lucide-react";
 import { Markdown } from "@/components/Markdown";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { Eyebrow } from "@/components/ui/eyebrow";
 import { getLegalPageContent, legalPages, type LegalPageSlug } from "@/lib/legal";
 
 type LegalDocumentPageProps = {
@@ -21,7 +22,7 @@ export async function LegalDocumentPage({ slug }: LegalDocumentPageProps) {
         <div className="pointer-events-none absolute left-[-8rem] top-24 size-72 rounded-full bg-primary/10 blur-3xl" />
         <div className="pointer-events-none absolute right-[-6rem] top-40 size-80 rounded-full bg-accent/10 blur-3xl" />
 
-        <section className="relative mx-auto max-w-6xl px-6 pb-10 lg:px-12">
+        <section className="relative mx-auto max-w-4xl px-6 pb-10 lg:px-12">
           <Link
             href="/"
             className="inline-flex items-center gap-2 rounded-full border border-border/80 bg-layer-1/80 px-4 py-2 text-sm text-foreground/80 shadow-sm shadow-black/[0.04] transition-colors hover:text-foreground"
@@ -31,9 +32,7 @@ export async function LegalDocumentPage({ slug }: LegalDocumentPageProps) {
           </Link>
 
           <div className="mt-8 max-w-3xl">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-subtle-foreground">
-              {config.eyebrow}
-            </p>
+            <Eyebrow>{config.eyebrow}</Eyebrow>
             <h1 className="mt-4 font-display text-4xl tracking-wide text-foreground sm:text-5xl">
               {config.title}
             </h1>
@@ -43,7 +42,7 @@ export async function LegalDocumentPage({ slug }: LegalDocumentPageProps) {
           </div>
         </section>
 
-        <section className="relative mx-auto max-w-6xl px-6 pb-24 lg:px-12">
+        <section className="relative mx-auto max-w-4xl px-6 pb-24 lg:px-12">
           <div className="overflow-hidden rounded-[2rem] border border-border/80 bg-layer-1/90 shadow-[0_20px_80px_rgba(0,0,0,0.06)] backdrop-blur-sm">
             <div className="border-b border-border/80 px-6 py-4 sm:px-8 lg:px-12">
               <p className="text-sm text-muted-foreground">

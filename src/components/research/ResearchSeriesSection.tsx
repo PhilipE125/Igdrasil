@@ -1,6 +1,7 @@
 import { ArrowUpRight, BarChart3, LineChart } from "lucide-react";
 import { ResearchChart } from "@/components/research/ResearchChart";
-import { Delta, Eyebrow, StatusBadge } from "@/components/research/atoms";
+import { Delta, StatusBadge } from "@/components/research/atoms";
+import { Eyebrow } from "@/components/ui/eyebrow";
 import {
   deltaVsFourWeekAverage,
   deltaVsLastYear,

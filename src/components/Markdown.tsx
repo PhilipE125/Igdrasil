@@ -15,7 +15,7 @@ export function Markdown({ children }: { children: string }) {
       components={{
         h1: ({ children, ...props }) => (
           <h2
-            className="mt-10 scroll-mt-28 font-display text-3xl tracking-wide text-foreground first:mt-0 sm:text-4xl"
+            className="mt-14 scroll-mt-28 border-t border-border/70 pt-9 font-display text-2xl tracking-wide text-foreground first:mt-0 first:border-0 first:pt-0 sm:text-3xl"
             {...props}
           >
             {children}
@@ -23,7 +23,7 @@ export function Markdown({ children }: { children: string }) {
         ),
         h2: ({ children, ...props }) => (
           <h2
-            className="mt-10 scroll-mt-28 font-display text-3xl tracking-wide text-foreground first:mt-0 sm:text-4xl"
+            className="mt-14 scroll-mt-28 border-t border-border/70 pt-9 font-display text-2xl tracking-wide text-foreground first:mt-0 first:border-0 first:pt-0 sm:text-3xl"
             {...props}
           >
             {children}
@@ -31,7 +31,7 @@ export function Markdown({ children }: { children: string }) {
         ),
         h3: ({ children, ...props }) => (
           <h3
-            className="mt-8 scroll-mt-28 text-xl font-semibold text-foreground sm:text-2xl"
+            className="mt-8 max-w-[68ch] scroll-mt-28 text-lg font-semibold text-foreground sm:text-xl"
             {...props}
           >
             {children}
@@ -43,18 +43,18 @@ export function Markdown({ children }: { children: string }) {
           </h4>
         ),
         p: ({ children, ...props }) => (
-          <p className="mt-4 text-[15px] leading-7 text-foreground/85" {...props}>
+          <p className="mt-4 max-w-[68ch] text-[15px] leading-7 text-foreground/85" {...props}>
             {children}
           </p>
         ),
         hr: (props) => <hr className="my-8 border-border/80" {...props} />,
         ul: ({ children, ...props }) => (
-          <ul className="mt-4 list-disc space-y-2 pl-6 text-[15px] leading-7 text-foreground/85 marker:text-primary" {...props}>
+          <ul className="mt-4 max-w-[68ch] list-disc space-y-2 pl-6 text-[15px] leading-7 text-foreground/85 marker:text-primary" {...props}>
             {children}
           </ul>
         ),
         ol: ({ children, ...props }) => (
-          <ol className="mt-4 list-decimal space-y-2 pl-6 text-[15px] leading-7 text-foreground/85 marker:text-primary" {...props}>
+          <ol className="mt-4 max-w-[68ch] list-decimal space-y-2 pl-6 text-[15px] leading-7 text-foreground/85 marker:text-primary" {...props}>
             {children}
           </ol>
         ),
@@ -75,7 +75,7 @@ export function Markdown({ children }: { children: string }) {
         ),
         blockquote: ({ children, ...props }) => (
           <blockquote
-            className="my-6 rounded-2xl border border-primary/25 bg-primary/6 px-5 py-4 text-sm leading-7 text-foreground/80"
+            className="my-6 max-w-[68ch] rounded-2xl border border-primary/25 bg-primary/6 px-5 py-4 text-sm leading-7 text-foreground/80"
             {...props}
           >
             {children}

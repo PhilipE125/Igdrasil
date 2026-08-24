@@ -2,7 +2,8 @@
 
 import { useMemo, useState } from "react";
 import { Table2 } from "lucide-react";
-import { Delta, Eyebrow, SearchBar, StatusBadge } from "@/components/research/atoms";
+import { Delta, SearchBar, StatusBadge } from "@/components/research/atoms";
+import { Eyebrow } from "@/components/ui/eyebrow";
 import {
   deltaVsFourWeekAverage,
   formatCount,

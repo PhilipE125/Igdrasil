@@ -3,7 +3,7 @@ import { ResearchArticles } from "@/components/research/ResearchArticles";
 import { ResearchRail } from "@/components/research/ResearchRail";
 import { ResearchRegister } from "@/components/research/ResearchRegister";
 import { ResearchSeriesSection } from "@/components/research/ResearchSeriesSection";
-import { Eyebrow } from "@/components/research/atoms";
+import { Eyebrow } from "@/components/ui/eyebrow";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import {
