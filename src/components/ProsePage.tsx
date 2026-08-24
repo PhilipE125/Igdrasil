@@ -1,26 +1,31 @@
+import type { ReactNode } from "react";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { Markdown } from "@/components/Markdown";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { Eyebrow } from "@/components/ui/eyebrow";
-import { getLegalPageContent, legalPages, type LegalPageSlug } from "@/lib/legal";
 
-type LegalDocumentPageProps = {
-  slug: LegalPageSlug;
+type ProsePageProps = {
+  eyebrow: string;
+  title: string;
+  lead?: string;
+  /** Byline, dateline, avatars — whatever sits under the lead. */
+  meta?: ReactNode;
+  content: string;
+  /** Structured data for the page. */
+  children?: ReactNode;
 };
 
-export async function LegalDocumentPage({ slug }: LegalDocumentPageProps) {
-  const config = legalPages[slug];
-  const content = await getLegalPageContent(slug);
-
+/** Masthead plus a markdown body, for the long-form pages under `content/pages/`. */
+export function ProsePage({ eyebrow, title, lead, meta, content, children }: ProsePageProps) {
   return (
     <>
       <SiteHeader />
+      {children}
       <main className="relative overflow-hidden pt-24">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(238,143,224,0.16),transparent_32%),radial-gradient(circle_at_top_right,rgba(176,238,143,0.18),transparent_28%)]" />
         <div className="pointer-events-none absolute left-[-8rem] top-24 size-72 rounded-full bg-primary/10 blur-3xl" />
-        <div className="pointer-events-none absolute right-[-6rem] top-40 size-80 rounded-full bg-accent/10 blur-3xl" />
 
         <section className="relative mx-auto max-w-4xl px-6 pb-10 lg:px-12">
           <Link
@@ -32,28 +37,23 @@ export async function LegalDocumentPage({ slug }: LegalDocumentPageProps) {
           </Link>
 
           <div className="mt-8 max-w-3xl">
-            <Eyebrow>{config.eyebrow}</Eyebrow>
-            <h1 className="mt-4 font-display text-4xl tracking-wide text-foreground sm:text-5xl">
-              {config.title}
+            <Eyebrow>{eyebrow}</Eyebrow>
+            <h1 className="mt-4 font-display text-4xl tracking-wide text-foreground text-balance sm:text-5xl">
+              {title}
             </h1>
-            <p className="mt-4 max-w-2xl text-base leading-7 text-muted-foreground">
-              {config.description}
-            </p>
+            {lead ? (
+              <p className="mt-4 max-w-2xl text-base leading-7 text-muted-foreground text-pretty">
+                {lead}
+              </p>
+            ) : null}
+            {meta}
           </div>
         </section>
 
         <section className="relative mx-auto max-w-4xl px-6 pb-24 lg:px-12">
-          <div className="overflow-hidden rounded-[2rem] border border-border/80 bg-layer-1/90 shadow-[0_20px_80px_rgba(0,0,0,0.06)] backdrop-blur-sm">
-            <div className="border-b border-border/80 px-6 py-4 sm:px-8 lg:px-12">
-              <p className="text-sm text-muted-foreground">
-                A stable public copy of this document for customer review and compliance reference.
-              </p>
-            </div>
-
-            <div className="px-6 py-8 sm:px-8 lg:px-12 lg:py-10">
-              <Markdown>{content}</Markdown>
-            </div>
-          </div>
+          <article className="overflow-hidden rounded-[2rem] border border-border/80 bg-layer-1/90 px-6 py-8 shadow-[0_20px_80px_rgba(0,0,0,0.06)] backdrop-blur-sm sm:px-8 lg:px-12 lg:py-10">
+            <Markdown>{content}</Markdown>
+          </article>
         </section>
       </main>
       <SiteFooter />

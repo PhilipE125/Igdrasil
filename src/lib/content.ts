@@ -16,10 +16,12 @@ import {
   GitBranch,
   Landmark,
   Layers,
+  LineChart,
   Mail,
   Receipt,
   Send,
   Sparkles,
+  Users,
   Wallet,
 } from "lucide-react";
 
@@ -193,6 +195,14 @@ export const navDropdowns: NavDropdown[] = [
       { label: "VAT", href: "/#services", description: "Quarterly VAT reports prepared and filed on time.", Icon: Receipt },
       { label: "Employer Reporting", href: "/#services", description: "AGI and employer declarations without the spreadsheets.", Icon: FileText },
       { label: "Recurring Reports", href: "/#services", description: "Monthly P&L, cash flow, and KPI snapshots.", Icon: CalendarClock },
+    ],
+  },
+  {
+    label: "Resurser",
+    items: [
+      { label: "Research", href: "/research", description: "Standing measurements of the Swedish accounting economy, updated on a schedule.", Icon: LineChart },
+      { label: "Why Igdrasil", href: "/why-igdrasil", description: "What the platform does, how it works, and where the guardrails sit.", Icon: BookOpen },
+      { label: "About us", href: "/about", description: "The founders behind Igdrasil and why we are building it.", Icon: Users },
     ],
   },
 ];
@@ -565,6 +575,7 @@ export const footerColumns: FooterColumn[] = [
       { label: "Receipts & invoices → Fortnox", href: "/#product" },
       { label: "AI Assistant", href: "/#product" },
       { label: "Reports, Analytics & Integrations", href: "/#product" },
+      { label: "Why Igdrasil", href: "/why-igdrasil" },
     ],
   },
   {
@@ -580,10 +591,14 @@ export const footerColumns: FooterColumn[] = [
   {
     heading: "Company",
     links: [
-      { label: "About", href: "/#about" },
+      { label: "Research", href: "/research" },
+      { label: "About", href: "/about" },
       { label: "Privacy", href: "/privacy" },
+      { label: "Cookies", href: "/cookies" },
       { label: "Terms", href: "/terms" },
-      { label: "GDPR", href: "/privacy" },
+      { label: "DPA", href: "/dpa" },
+      { label: "Sub-processors", href: "/subprocessors" },
+      { label: "Security", href: "/security-overview" },
     ],
   },
   {
